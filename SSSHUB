@@ -3231,6 +3231,18 @@ spawn(function()
         end)
     end
 end)
+
+local SelectFast = Tabs.Sg:AddDropdown("SelectWeapon", {
+    Title = "ใช้ไม่ได้",
+    Description = "Select Fast Attack", 
+    Values = {"Noob Fast","Normal Fast","Super Fast"},
+    Multi = false,
+    Default = 2,
+})
+SelectFast:OnChanged(function(Value)
+    _G.FastAttackType = Value
+end)   
+
 local Toggle = Tabs.Sg:AddToggle("Haki", {
     Title = "ออโต้เปิดฮาคิ", 
     Description = "Auto Haki", 
