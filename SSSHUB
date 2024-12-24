@@ -23,14 +23,7 @@ local function CheckLevel()
             NameMonster = "Monkey" 
             CFrameQuest = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
             CFrameMonster = CFrame.new(-1448.51806640625, 67.85301208496094, 11.46579647064209)
-        elseif Lv == 15 or Lv <= 29 then
-            Monster = "Gorilla"
-            LvQuest = 2
-            NameQuest = "JungleQuest"
-            NameMonster = "Gorilla"
-            CFrameQuest = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-            CFrameMonster = CFrame.new(-1149.8736669921875, 40.46354675292969, -525.4237060546875)
-        elseif Lv == 30 or Lv <= 39 then
+        elseif Lv == 15 or Lv <= 39 then
             Monster = "Pirate"
             LvQuest = 1
             NameQuest = "BuggyQuest1"
