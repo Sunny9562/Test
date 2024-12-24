@@ -5526,6 +5526,7 @@ Tabs.Misc:AddButton({
         Hop()
     end
 })
+
 for _, v in next, getgc() do
     if typeof(v) == "function" then
         local name = debug.info(v, 'n')
@@ -5555,3 +5556,22 @@ for _, v in next, getgc() do
         end
     end
 end
+local OldWeaponData = function(self, nnn)
+    local Data = OldGetWeaponData(self, nnn)
+    if Attack then
+        Data.HitboxMagnitude = 100
+    end
+    return Data
+end
+local OldGetMovesetAnimCache = function(self, nnn)
+    local Data = OldGetMovesetAnimCache(self, nnn)
+    if Attack then
+        local index = ...
+        if string.find(index, "-basic", 1, true) then
+            local rspy = string.sub(index, 1, #index - 1)
+            return Data[rspy.."3"] or Data[rspy.."2"]
+        end
+    end
+    return Data
+end
+
