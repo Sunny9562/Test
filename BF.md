@@ -5568,7 +5568,7 @@ Module.FastAttack = (function()
 
 	local module = {
 		NextAttack = 0,
-		Distance = 55,
+		Distance = 60,
 		attackMobs = true,
 		attackPlayers = true
 	}
@@ -5623,7 +5623,7 @@ Module.FastAttack = (function()
 
 	task.spawn(function()
 		while task.wait(Settings.ClickDelay or 0.125) do
-			if (tick() - Module.AttackCooldown) < 0.1833333194255829 then continue end
+			if (tick() - Module.AttackCooldown) < 0.4833333194255829 then continue end
 			if not Settings.AutoClick then continue end
 			if not Module.IsAlive(client.Character) then continue end
 			if not client.Character:FindFirstChildOfClass("Tool") then continue end
