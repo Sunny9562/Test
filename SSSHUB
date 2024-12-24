@@ -3233,7 +3233,7 @@ spawn(function()
 end)
 
 local SelectFast = Tabs.Sg:AddDropdown("SelectWeapon", {
-    Title = "##ใช้ไม่ได้",
+    Title = "ใช้ไม่ได้",
     Description = "Select Fast Attack", 
     Values = {"Noob Fast","Normal Fast","Super Fast"},
     Multi = false,
