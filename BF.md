@@ -6,1037 +6,1644 @@ elseif game.PlaceId == 7449423635 then
    World3 = true
 end
 
-function CheckLevel2()
-    local Lv = game:GetService("Players").LocalPlayer.Data.Level.Value
-    if Old_World then
-        if game.Players.LocalPlayer.Data.Level.Value == 1 or game.Players.LocalPlayer.Data.Level.Value <= 9 or SelectMonster == "" then -- Bandit
-            Ms = "Bandit"
+local function CheckLevel()
+ local Lv = game:GetService("Players").LocalPlayer.Data.Level.Value
+    if World1 then
+         if Lv == 1 or Lv <= 9 then
+            Monster = "Bandit"
+            LvQuest = 1
             NameQuest = "BanditQuest1"
-            QuestLv = 1
-            NameMon = "Bandit"
-            CFrameQ = CFrame.new(1059.37195, 15.4495068, 1550.4231, 0.939700544, -0, -0.341998369, 0, 1, -0, 0.341998369, 0, 0.939700544)
-            CFrameMon = CFrame.new(1353.44885, 3.40935516, 1376.92029, 0.776053488, -6.97791975e-08, 0.630666852, 6.99138596e-08, 1, 2.4612488e-08, -0.630666852, 2.49917598e-08, 0.776053488)
-            Next_Level_X = 10
-        elseif game.Players.LocalPlayer.Data.Level.Value == 10 or game.Players.LocalPlayer.Data.Level.Value <= 100 then
-            Ms = "Shanda"
-            NameQuest = "SkyExp1Quest"
-            QuestLv = 2
-            NameMon = "Shanda"
-            CFrameQ = CFrame.new(-7859.09814, 5544.19043, -381.476196)
-            CFrameMon = CFrame.new(-7904.57373, 5584.37646, -459.62973)
-
-            Next_Level_X = 75
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 60 and game.Players.LocalPlayer.Data.Level.Value <= 75-1 or SelectMonster == "Desert Bandit" then
-            Ms = "Desert Bandit"
+            NameMonster = "Bandit"
+            CFrameQuest = CFrame.new(1059.37195, 15.4495068, 1550.4231, 0.939700544, -0, -0.341998369, 0, 1, -0, 0.341998369, 0, 0.939700544)
+            CFrameMonster = CFrame.new(1045.962646484375, 27.00250816345215, 1560.8203125)
+        elseif Lv == 10 or Lv <= 14 then
+            Monster = "Monkey"
+            LvQuest = 1
+            NameQuest = "JungleQuest"
+            NameMonster = "Monkey" 
+            CFrameQuest = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            CFrameMonster = CFrame.new(-1448.51806640625, 67.85301208496094, 11.46579647064209)
+        elseif Lv == 15 or Lv <= 29 then
+            Monster = "Gorilla"
+            LvQuest = 2
+            NameQuest = "JungleQuest"
+            NameMonster = "Gorilla"
+            CFrameQuest = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            CFrameMonster = CFrame.new(-1149.8736669921875, 40.46354675292969, -525.4237060546875)
+        elseif Lv == 30 or Lv <= 39 then
+            Monster = "Pirate"
+            LvQuest = 1
+            NameQuest = "BuggyQuest1"
+            NameMonster = "Pirate"
+            CFrameQuest = CFrame.new(-1139.5631103515625, 4.75205135345459, 3830.38671875)
+            CFrameMonster = CFrame.new(-1045.943115234375, 64.41950225830078, 3930.302001953125)
+        elseif Lv == 40 or Lv <= 59 then
+            Monster = "Brute"
+            LvQuest = 2
+            NameQuest = "BuggyQuest1"
+            NameMonster = "Brute"
+            CFrameQuest = CFrame.new(-1139.5631103515625, 4.75205135345459, 3830.38671875)
+            CFrameMonster = CFrame.new(-1150.2763671875, 130.60118103027344, 4164.9345703125)
+        elseif Lv == 60 or Lv <= 74 then
+            Monster = "Desert Bandit"
+            LvQuest = 1
             NameQuest = "DesertQuest"
-            QuestLv = 1
-            NameMon = "Desert Bandit"
-            CFrameQ = CFrame.new(894.488647, 5.14000702, 4392.43359, 0.819155693, -0, -0.573571265, 0, 1, -0, 0.573571265, 0, 0.819155693)
-            CFrameMon = CFrame.new(932.788818, 6.8503746, 4488.24609, -0.998625934, 3.08948351e-08, 0.0524050146, 2.79967303e-08, 1, -5.60361286e-08, -0.0524050146, -5.44919629e-08, -0.998625934)
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 75 and game.Players.LocalPlayer.Data.Level.Value <= 90-1 or SelectMonster == "Desert Officer" then
-            Ms = "Desert Officer"
+            NameMonster = "Desert Bandit"
+            CFrameQuest = CFrame.new(894.488647, 5.14000702, 4392.43359, 0.819155693, -0, -0.573571265, 0, 1, -0, 0.573571265, 0, 0.819155693)
+            CFrameMonster = CFrame.new(935.8798046975, 6.44867467880249, 4481.5859375)
+        elseif Lv == 75 or Lv <= 89 then
+            Monster = "Desert Officer"
+            LvQuest = 2
             NameQuest = "DesertQuest"
-            QuestLv = 2
-            NameMon = "Desert Officer"
-            CFrameQ = CFrame.new(894.488647, 5.14000702, 4392.43359, 0.819155693, -0, -0.573571265, 0, 1, -0, 0.573571265, 0, 0.819155693)
-            CFrameMon = CFrame.new(1617.07886, 1.5542295, 4295.54932, -0.997540116, -2.26287735e-08, -0.070099175, -1.69377223e-08, 1, -8.17798806e-08, 0.070099175, -8.03913949e-08, -0.997540116)
-            
-            SelectMonster = "Desert Bandit"
-            Next_Level_X = 90
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 90 and game.Players.LocalPlayer.Data.Level.Value <= 100-1 or SelectMonster == "Snow Bandit" then -- Snow Bandits
-            Ms = "Snow Bandit"
+            NameMonster = "Desert Officer"
+            CFrameQuest = CFrame.new(894.488647, 5.14000702, 4392.43359, 0.819155693, -0, -0.573571265, 0, 1, -0, 0.573571265, 0, 0.819155693)
+            CFrameMonster = CFrame.new(1608.2822265625, 8.614224433898926, 4371.00732421875)
+        elseif Lv == 90 or Lv <= 99 then
+            Monster = "Snow Bandit"
+            LvQuest = 1
             NameQuest = "SnowQuest"
-            QuestLv = 1
-            NameMon = "Snow Bandit"
-            CFrameQ = CFrame.new(1389.74451, 86.6520844, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
-            CFrameMon = CFrame.new(1412.92346, 55.3503647, -1260.62036, -0.246266365, -0.0169920288, -0.969053388, 0.000432241941, 0.999844253, -0.0176417865, 0.969202161, -0.00476344163, -0.246220857)
-            
-            if SelectMonster == "Snow Bandit" then
-            else
-                Next_Level_X = 100
-            end
-            if game.Players.LocalPlayer.Data.Level.Value >= 110 then
-                SelectBoss_P = "Yeti" 
-            end
-            
-        elseif game.Players.LocalPlayer.Data.Level.Value == 100 or game.Players.LocalPlayer.Data.Level.Value <= 119 or SelectMonster == "Snowman" then -- Snowman
-            Next_Level_X = 120
-            Ms = "Snowman"
+            NameMonster = "Snow Bandit"
+            CFrameQuest = CFrame.new(1389.74451, 88.1519318, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
+            CFrameMonster = CFrame.new(1354.347900390625, 87.27277374267578, -1393.946533203125)
+        elseif Lv == 100 or Lv <= 119 then
+            Monster = "Snowman"
+            LvQuest = 2
             NameQuest = "SnowQuest"
-            QuestLv = 2
-            NameMon = "Snowman"
-            CFrameQ = CFrame.new(1389.74451, 86.6520844, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
-            CFrameMon = CFrame.new(1376.86401, 97.2779999, -1396.93115, -0.986755967, 7.71178321e-08, -0.162211925, 7.71531674e-08, 1, 6.08143536e-09, 0.162211925, -6.51427134e-09, -0.986755967)
-            
-            
-            if game.Players.LocalPlayer.Data.Level.Value >= 110 then
-                SelectBoss_P = "Yeti" 
-            end
-            SelectMonster = "Snow Bandit"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 120 or game.Players.LocalPlayer.Data.Level.Value <= 174 or SelectMonster == "Chief Petty Officer" then -- Chief Petty Officer
-            Ms = "Chief Petty Officer"
+            NameMonster = "Snowman"
+            CFrameQuest = CFrame.new(1389.74451, 88.1519318, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
+            CFrameMonster = CFrame.new(1201.6412353515625, 144.57958984375, -1550.0670166015625)
+        elseif Lv == 120 or Lv <= 149 then
+            Monster = "Chief Petty Officer"
+            LvQuest = 1
             NameQuest = "MarineQuest2"
-            QuestLv = 1
-            NameMon = "Chief Petty Officer"
-            CFrameQ = CFrame.new(-5039.58643, 27.3500385, 4324.68018, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            CFrameMon = CFrame.new(-4882.8623, 22.6520386, 4255.53516, 0.273695946, -5.40380647e-08, -0.96181643, 4.37720793e-08, 1, -4.37274998e-08, 0.96181643, -3.01326679e-08, 0.273695946)
-            
-            
-            if game.Players.LocalPlayer.Data.Level.Value >= 130 then
-                SelectBoss_P = "Vice Admiral"
-            end
-            if SelectMonster == "Chief Petty Officer" then
-            else
-                Next_Level_X = 175
-            end
-        elseif SelectMonster == "Sky Bandit" then -- Sky Bandit
-            Ms = "Sky Bandit"
+            NameMonster = "Chief Petty Officer"
+            CFrameQuest = CFrame.new(-5039.58643, 27.3500385, 4324.68018, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMonster = CFrame.new(-4710.35986328125, 112.02615356445312, 4584.92578125)
+        elseif Lv == 150 or Lv <= 174 then
+            Monster = "Sky Bandit"
+            LvQuest = 1
             NameQuest = "SkyQuest"
-            QuestLv = 1
-            NameMon = "Sky Bandit"
-            CFrameQ = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
-            CFrameMon = CFrame.new(-4959.51367, 365.39267, -2974.56812, 0.964867651, 7.74418396e-08, 0.262737453, -6.95931988e-08, 1, -3.91783708e-08, -0.262737453, 1.95171506e-08, 0.964867651)
-            
-            
-        elseif game.Players.LocalPlayer.Data.Level.Value == 175 or game.Players.LocalPlayer.Data.Level.Value <= 190-1 or SelectMonster == "Dark Master" then -- Dark Master
-            
-            Ms = "Dark Master"
+            NameMonster = "Sky Bandit"
+            CFrameQuest = CFrame.new(-4838.701171875, 717.6693115234375, -2617.86474609375)
+            CFrameMonster = CFrame.new(-4965.37890625, 357.3741455078125, -2848.702392578125)
+        elseif Lv == 175 or Lv <= 189 then
+            Monster = "Dark Master"
+            LvQuest = 2
             NameQuest = "SkyQuest"
-            QuestLv = 2
-            NameMon = "Dark Master"
-            CFrameQ = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
-            CFrameMon = CFrame.new(-5079.98096, 376.477356, -2194.17139, 0.465965867, -3.69776352e-08, 0.884802461, 3.40249851e-09, 1, 4.00000886e-08, -0.884802461, -1.56281423e-08, 0.465965867)
-            
-            SelectMonster = "Sky Bandit"
-            if SelectMonster == "Dark Master" then
-            else
-                Next_Level_X = 190
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 190 or game.Players.LocalPlayer.Data.Level.Value <= 209 or SelectMonster == "Prisoner" then
-            
-            Ms = "Prisoner"
-            QuestLv = 1
+            NameMonster = "Dark Master"
+            CFrameQuest = CFrame.new(-4838.701171875, 717.6693115234375, -2617.86474609375)
+            CFrameMonster = CFrame.new(-5224.05859375, 484.4478454589844, -2275.99853515625)
+        elseif Lv == 190 or Lv <= 209 then
+            Monster = "Prisoner"
+            LvQuest = 1
             NameQuest = "PrisonerQuest"
-            NameMon = "Prisoner"
-            CFrameQ = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-            CFrameMon = CFrame.new(5433.39307, 88.678093, 514.986877, 0.879988372, 0, -0.474995494, 0, 1, 0, 0.474995494, 0, 0.879988372)
-            if game.Players.LocalPlayer.Data.Level.Value >= 220 then
-                SelectBoss_P = "Warden" 
-            end
-            if game.Players.LocalPlayer.Data.Level.Value >= 232 then
-                SelectBoss_P = "Chief Warden"
-            end
-            if game.Players.LocalPlayer.Data.Level.Value >= 242 then
-                SelectBoss_P = "Thunder God"
-            end
-            if SelectMonster == "Prisoner" then
-            else
-                Next_Level_X = 210
-            end
-            Bypass_TP_Dis = true
-        elseif game.Players.LocalPlayer.Data.Level.Value == 210 or game.Players.LocalPlayer.Data.Level.Value <= 249 or SelectMonster == "Dangerous Prisoner" then
-            if game.Players.LocalPlayer.Data.Level.Value >= 220 then
-                SelectBoss_P = "Warden" 
-            end
-            if game.Players.LocalPlayer.Data.Level.Value >= 232 then
-                SelectBoss_P = "Chief Warden"
-            end
-            if game.Players.LocalPlayer.Data.Level.Value >= 242 then
-                SelectBoss_P = "Thunder God"
-            end
-            Ms = "Dangerous Prisoner"
-            QuestLv = 2
+            NameMonster = "Prisoner"
+            CFrameQuest = CFrame.new(5309.6474609375, 1.654262661933899, 477.8815612792969)
+            CFrameMonster = CFrame.new(5276.5576171875, 87.83663940429688, 561.0100708007812)
+        elseif Lv == 210 or Lv <= 249 then
+            Monster = "Dangerous Prisoner"
+            LvQuest = 2
             NameQuest = "PrisonerQuest"
-            NameMon = "Dangerous Prisoner"
-            CFrameQ = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
-            CFrameMon = CFrame.new(5433.39307, 88.678093, 514.986877, 0.879988372, 0, -0.474995494, 0, 1, 0, 0.474995494, 0, 0.879988372)
-            SelectMonster = "Prisoner"
-            Next_Level_X = 250
-            Bypass_TP_Dis = true
-        elseif game.Players.LocalPlayer.Data.Level.Value == 250 or game.Players.LocalPlayer.Data.Level.Value <= 274 or SelectMonster == "Toga Warrior" then -- Toga Warrior
-            
-            Ms = "Toga Warrior"
+            NameMonster = "Dangerous Prisoner"
+            CFrameQuest = CFrame.new(5309.6474609375, 1.654262661933899, 477.8815612792969)
+            CFrameMonster = CFrame.new(5276.5576171875, 87.83663940429688, 561.0100708007812)
+        elseif Lv == 250 or Lv <= 299 then
+            Monster = "Toga Warrior"
+            LvQuest = 1
             NameQuest = "ColosseumQuest"
-            QuestLv = 1
-            NameMon = "Toga Warrior"
-            CFrameQ = CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
-            CFrameMon = CFrame.new(-1779.97583, 44.6077499, -2736.35474, 0.984437346, 4.10396339e-08, 0.175734788, -3.62286876e-08, 1, -3.05844168e-08, -0.175734788, 2.3741821e-08, 0.984437346)
-            
-            if SelectMonster == "Toga Warrior" then
-            else
-                Next_Level_X = 275
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 275 or game.Players.LocalPlayer.Data.Level.Value <= 299 or SelectMonster == "Gladiator" then -- Gladiato
-            
-            Ms = "Gladiator"
-            NameQuest = "ColosseumQuest"
-            QuestLv = 2
-            NameMon = "Gladiator"
-            CFrameQ = CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
-            CFrameMon = CFrame.new(-1274.75903, 58.1895943, -3188.16309, 0.464524001, 6.21005611e-08, 0.885560572, -4.80449414e-09, 1, -6.76054768e-08, -0.885560572, 2.71497012e-08, 0.464524001)
-            
-            SelectMonster = "Toga Warrior"
-            Next_Level_X = 300
-        elseif game.Players.LocalPlayer.Data.Level.Value == 300 or game.Players.LocalPlayer.Data.Level.Value <= 324 or SelectMonster == "Military Soldier" then -- Military Soldier
-            if game.Players.LocalPlayer.Data.Level.Value >= 350 then
-                SelectBoss_P = "Magma Admiral"
-            end
-            Ms = "Military Soldier"
+            NameMonster = "Toga Warrior"
+            CFrameQuest = CFrame.new(-1580.04663, 6.35000277, -2986.47534, -0.515037298, 0, -0.857167721, 0, 1, 0, 0.857167721, 0, -0.515037298)
+            CFrameMonster = CFrame.new(-1820.21484375, 51.68385696411133, -2740.6650390625)
+        elseif Lv == 300 or Lv <= 324 then
+            Monster = "Military Soldier"
+            LvQuest = 1
             NameQuest = "MagmaQuest"
-            QuestLv = 1
-            NameMon = "Military Soldier"
-            CFrameQ = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
-            CFrameMon = CFrame.new(-5363.01123, 41.5056877, 8548.47266, -0.578253984, -3.29503091e-10, 0.815856814, 9.11209668e-08, 1, 6.498761e-08, -0.815856814, 1.11920997e-07, -0.578253984)
-            
-            if SelectMonster == "Military Soldier" then
-            else
-                Next_Level_X = 325
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 325 or game.Players.LocalPlayer.Data.Level.Value <= 374 or SelectMonster == "Military Spy" then -- Military Spy
-            if game.Players.LocalPlayer.Data.Level.Value >= 350 then
-                SelectBoss_P = "Magma Admiral"
-            end
-            Ms = "Military Spy"
+            NameMonster = "Military Soldier"
+            CFrameQuest = CFrame.new(-5313.37012, 10.9500084, 8515.29395, -0.499959469, 0, 0.866048813, 0, 1, 0, -0.866048813, 0, -0.499959469)
+            CFrameMonster = CFrame.new(-5411.16455078125, 11.081554412841797, 8454.29296875)
+        elseif Lv == 325 or Lv <= 374 then
+            Monster = "Military Spy"
+            LvQuest = 2
             NameQuest = "MagmaQuest"
-            QuestLv = 2
-            NameMon = "Military Spy"
-            CFrameQ = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
-            CFrameMon = CFrame.new(-5787.99023, 120.864456, 8762.25293, -0.188358366, -1.84706277e-08, 0.982100308, -1.23782129e-07, 1, -4.93306951e-09, -0.982100308, -1.22495649e-07, -0.188358366)
-            
-            
-            SelectMonster = "Military Soldier"
-            Next_Level_X = 375
-        elseif game.Players.LocalPlayer.Data.Level.Value == 375 or game.Players.LocalPlayer.Data.Level.Value <= 399 or SelectMonster == "Fishman Warrior" then -- Fishman Warrior
-            if game.Players.LocalPlayer.Data.Level.Value >= 425 then
-                SelectBoss_P = "Fishman Lord"
-            end
-            Ms = "Fishman Warrior"
+            NameMonster = "Military Spy"
+            CFrameQuest = CFrame.new(-5313.37012, 10.9500084, 8515.29395, -0.499959469, 0, 0.866048813, 0, 1, 0, -0.866048813, 0, -0.499959469)
+            CFrameMonster = CFrame.new(-5802.8681640625, 86.26241302490234, 8828.859375)
+        elseif Lv == 375 or Lv <= 399 then
+            Monster = "Fishman Warrior"
+            LvQuest = 1
             NameQuest = "FishmanQuest"
-            QuestLv = 1
-            NameMon = "Fishman Warrior"
-            CFrameQ = CFrame.new(61122.5625, 18.4716396, 1568.16504)
-            CFrameMon = CFrame.new(60946.6094, 48.6735229, 1525.91687, -0.0817126185, 8.90751153e-08, 0.996655822, 2.00889794e-08, 1, -8.77269599e-08, -0.996655822, 1.28533992e-08, -0.0817126185)
-            if SelectMonster == "Fishman Warrior" then
-            else
-                Next_Level_X = 400
+            NameMonster = "Fishman Warrior"
+            CFrameQuest = CFrame.new(61122.65234375, 18.497442245483, 1569.3997802734)
+            CFrameMonster = CFrame.new(60878.30078125, 18.482830047607422, 1543.7574462890625)
+            if _G.AutoFarmLevel and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
             end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 400 or game.Players.LocalPlayer.Data.Level.Value <= 449 or SelectMonster == "Fishman Commando" then -- Fishman Commando
-            if game.Players.LocalPlayer.Data.Level.Value >= 425 then
-                SelectBoss_P = "Fishman Lord"
-            end
-            Ms = "Fishman Commando"
+        elseif Lv == 400 or Lv <= 449 then
+            Monster = "Fishman Commando"
+            LvQuest = 2
             NameQuest = "FishmanQuest"
-            QuestLv = 2
-            NameMon = "Fishman Commando"
-            CFrameQ = CFrame.new(61122.5625, 18.4716396, 1568.16504)
-            CFrameMon = CFrame.new(61902.7383, 18.4828358, 1478.33936, -0.803795099, 0, -0.594906271, 0, 1, 0, 0.594906271, 0, -0.803795099)
-            if SelectMonster == "Fishman Commando" then
-            else
-                Next_Level_X = 450
+            NameMonster = "Fishman Commando"
+            CFrameQuest = CFrame.new(61122.65234375, 18.497442245483, 1569.3997802734)
+            CFrameMonster = CFrame.new(61922.6328125, 18.482830047607422, 1493.934326171875)
+            if _G.AutoFarmLevel and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61122.65234375, 18.497442245483, 1569.3997802734))
             end
-            SelectMonster = "Fishman Warrior"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 450 or game.Players.LocalPlayer.Data.Level.Value <= 474 or SelectMonster == "God's Guard" then 
-            Ms = "God's Guard"
+        elseif Lv == 450 or Lv <= 474 then
+            Monster = "God's Guard"
+            LvQuest = 1
             NameQuest = "SkyExp1Quest"
-            QuestLv = 1
-            NameMon = "God's Guards"
-            CFrameQ = CFrame.new(-4721.71436, 845.277161, -1954.20105)
-            CFrameMon = CFrame.new(-4716.95703, 853.089722, -1933.925427)
-            if SelectMonster == "God's Guard" then
-            else
-                Next_Level_X = 475
+            NameMonster = "God's Guard"
+            CFrameQuest = CFrame.new(-4721.88867, 843.874695, -1949.96643, 0.996191859, -0, -0.0871884301, 0, 1, -0, 0.0871884301, 0, 0.996191859)
+            CFrameMonster = CFrame.new(-4710.04296875, 845.2769775390625, -1927.3079833984375)
+            if _G.AutoFarmLevel and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4721.88867, 843.874695, -1949.96643, 0.996191859, -0, -0.0871884301, 0, 1, -0, 0.0871884301, 0, 0.996191859))
             end
-            SelectMonster = "Fishman Commando"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 475 or game.Players.LocalPlayer.Data.Level.Value <= 524 or SelectMonster == "Shanda" then
-            Ms = "Shanda"
+        elseif Lv == 475 or Lv <= 524 then
+            Monster = "Shanda"
+            LvQuest = 2
             NameQuest = "SkyExp1Quest"
-            QuestLv = 2
-            NameMon = "Shandas"
-            CFrameQ = CFrame.new(-7859.09814, 5544.19043, -381.476196)
-            CFrameMon = CFrame.new(-7904.57373, 5584.37646, -459.62973)
-            if game.Players.LocalPlayer.Data.Level.Value >= 500 then
-                SelectBoss_P = "Wysper"
+            NameMonster = "Shanda"
+            CFrameQuest = CFrame.new(-7859.09814, 5544.19043, -381.476196, -0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, -0.422592998)
+            CFrameMonster = CFrame.new(-7678.48974609375, 5566.40380859375, -497.2156066894531)
+            if _G.AutoFarmLevel and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7859.09814, 5544.19043, -381.476196, -0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, -0.422592998))
             end
-            if SelectMonster == "Shanda" then
-            else
-                Next_Level_X = 525
-            end
-            SelectMonster = "God's Guard"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 525 or game.Players.LocalPlayer.Data.Level.Value <= 549 or SelectMonster == "Royal Squad" then -- Royal Squad
-            
-            Ms = "Royal Squad"
+        elseif Lv == 525 or Lv <= 549 then
+            Monster = "Royal Squad"
+            LvQuest = 1
             NameQuest = "SkyExp2Quest"
-            QuestLv = 1
-            NameMon = "Royal Squad"
-            CFrameQ = CFrame.new(-7906.81592, 5634.6626, -1411.99194, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            CFrameMon = CFrame.new(-7555.04199, 5606.90479, -1303.24744, -0.896107852, -9.6057462e-10, -0.443836004, -4.24974544e-09, 1, 6.41599973e-09, 0.443836004, 7.63560326e-09, -0.896107852)
-            
-            
-            if SelectMonster == "Royal Squad" then
-            else
-                Next_Level_X = 550
-            end
-            SelectMonster = "Shanda"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 550 or game.Players.LocalPlayer.Data.Level.Value <= 624 or SelectMonster == "Royal Soldier" then -- Royal Soldier
-            if game.Players.LocalPlayer.Data.Level.Value >= 575 then
-                SelectBoss_P = "Thunder God"
-            end
-            Ms = "Royal Soldier"
+            NameMonster = "Royal Squad"
+            CFrameQuest = CFrame.new(-7906.81592, 5634.6626, -1411.99194, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMonster = CFrame.new(-7624.25244140625, 5658.13330078125, -1467.354248046875)
+        elseif Lv == 550 or Lv <= 624 then
+            Monster = "Royal Soldier"
+            LvQuest = 2
             NameQuest = "SkyExp2Quest"
-            QuestLv = 2
-            NameMon = "Royal Soldier"
-            CFrameQ = CFrame.new(-7906.81592, 5634.6626, -1411.99194, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            CFrameMon = CFrame.new(-7837.31152, 5649.65186, -1791.08582, -0.716008604, 0.0104285581, -0.698013008, 5.02521061e-06, 0.99988848, 0.0149335321, 0.69809103, 0.0106890313, -0.715928733)
-            
-            
-            if SelectMonster == "Royal Soldier" then
-            else
-                Next_Level_X = 625
-            end
-            SelectMonster = "Royal Squad"
-            
-        elseif game.Players.LocalPlayer.Data.Level.Value == 625 or game.Players.LocalPlayer.Data.Level.Value <= 649 or SelectMonster == "Galley Pirate" then -- Galley Pirate
-            
-            Ms = "Galley Pirate"
+            NameMonster = "Royal Soldier"
+            CFrameQuest = CFrame.new(-7906.81592, 5634.6626, -1411.99194, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMonster = CFrame.new(-7836.75341796875, 5645.6640625, -1790.6236572265625)
+        elseif Lv == 625 or Lv <= 649 then
+            Monster = "Galley Pirate"
+            LvQuest = 1
             NameQuest = "FountainQuest"
-            QuestLv = 1
-            NameMon = "Galley Pirate"
-            CFrameQ = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
-            CFrameMon = CFrame.new(5569.80518, 38.5269432, 3849.01196, 0.896460414, 3.98027495e-08, 0.443124533, -1.34262139e-08, 1, -6.26611296e-08, -0.443124533, 5.02237434e-08, 0.896460414)
-            
-            if SelectMonster == "Galley Pirate" then
-            else
-                Next_Level_X = 650
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 650 or SelectMonster == "Galley Captain" then -- Galley Captain
-            if game.Players.LocalPlayer.Data.Level.Value >= 675 then
-                SelectBoss_P = "Cyborg"
-            end
-            Ms = "Galley Captain"
+            NameMonster = "Galley Pirate"
+            CFrameQuest = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
+            CFrameMonster = CFrame.new(5551.02197265625, 78.90135192871094, 3930.412841796875)
+        elseif Lv >= 650 then
+            Monster = "Galley Captain"
+            LvQuest = 2
             NameQuest = "FountainQuest"
-            QuestLv = 2
-            NameMon = "Galley Captain"
-            CFrameQ = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
-            CFrameMon = CFrame.new(5782.90186, 94.5326462, 4716.78174, 0.361808896, -1.24757526e-06, -0.932252586, 2.16989656e-06, 1, -4.96097414e-07, 0.932252586, -1.84339774e-06, 0.361808896)
-            
-            
-            
-            SelectMonster = "Galley Pirate"
-            Next_Level_X = 9999
+            NameMonster = "Galley Captain"
+            CFrameQuest = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
+            CFrameMonster = CFrame.new(5441.95166015625, 42.50205993652344, 4950.09375)
         end
-    end
-    if New_World then
-        if game.Players.LocalPlayer.Data.Level.Value == 700 or game.Players.LocalPlayer.Data.Level.Value <= 724 or SelectMonster == "Raider" then -- Raider
-            Ms = "Raider" 
+     elseif World2 then
+        if Lv == 700 or Lv <= 724 then
+            Monster = "Raider"
+            LvQuest = 1
             NameQuest = "Area1Quest"
-            QuestLv = 1
-            NameMon = "Raider"
-            CFrameQ = CFrame.new(-429.543518, 71.7699966, 1836.18188, -0.22495985, 0, -0.974368095, 0, 1, 0, 0.974368095, 0, -0.22495985)
-            CFrameMon = CFrame.new(-737.026123, 10.1748352, 2392.57959, 0.272128761, 0, -0.962260842, -0, 1, -0, 0.962260842, 0, 0.272128761)
-            
-            if SelectMonster == "Raider" then
-            else
-                Next_Level_X = 725
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 725 or game.Players.LocalPlayer.Data.Level.Value <= 774 or SelectMonster == "Mercenary" then -- Mercenary
-            if game.Players.LocalPlayer.Data.Level.Value >= 750 then
-                SelectBoss_P = "Diamond"
-            end
-            Ms = "Mercenary"
+            NameMonster = "Raider"
+            CFrameQuest = CFrame.new(-429.543518, 71.7699966, 1836.18188, -0.22495985, 0, -0.974368095, 0, 1, 0, 0.974368095, 0, -0.22495985)
+            CFrameMonster = CFrame.new(-728.3267211914062, 52.779319763183594, 2345.7705078125)
+        elseif Lv == 725 or Lv <= 774 then
+            Monster = "Mercenary"
+            LvQuest = 2
             NameQuest = "Area1Quest"
-            QuestLv = 2
-            NameMon = "Mercenary"
-            CFrameQ = CFrame.new(-429.543518, 71.7699966, 1836.18188, -0.22495985, 0, -0.974368095, 0, 1, 0, 0.974368095, 0, -0.22495985)
-            CFrameMon = CFrame.new(-1022.21271, 72.9855194, 1891.39148, -0.990782857, 0, -0.135460541, 0, 1, 0, 0.135460541, 0, -0.990782857)
-            
-            if SelectMonster == "Mercenary" then
-            else
-                Next_Level_X = 775
-            end
-            SelectMonster = "Raider"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 775 or game.Players.LocalPlayer.Data.Level.Value <= 799 or SelectMonster == "Swan Pirate" then -- Swan Pirate
-            Ms = "Swan Pirate"
+            NameMonster = "Mercenary"
+            CFrameQuest = CFrame.new(-429.543518, 71.7699966, 1836.18188, -0.22495985, 0, -0.974368095, 0, 1, 0, 0.974368095, 0, -0.22495985)
+            CFrameMonster = CFrame.new(-1004.3244018554688, 80.15886688232422, 1424.619384765625)
+        elseif Lv == 775 or Lv <= 799 then
+            Monster = "Swan Pirate"
+            LvQuest = 1
             NameQuest = "Area2Quest"
-            QuestLv = 1
-            NameMon = "Swan Pirate"
-            CFrameQ = CFrame.new(638.43811, 71.769989, 918.282898, 0.139203906, 0, 0.99026376, 0, 1, 0, -0.99026376, 0, 0.139203906)
-            CFrameMon = CFrame.new(976.467651, 111.174057, 1229.1084, 0.00852567982, -4.73897828e-08, -0.999963999, 1.12251888e-08, 1, -4.7295778e-08, 0.999963999, -1.08215579e-08, 0.00852567982)
-            
-            if SelectMonster == "Swan Pirate" then
-            else
-                Next_Level_X = 800
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 800 or game.Players.LocalPlayer.Data.Level.Value <= 874 or SelectMonster == "Factory Staff" then -- Factory Staff
-            Ms = "Factory Staff"
+            NameMonster = "Swan Pirate"
+            CFrameQuest = CFrame.new(638.43811, 71.769989, 918.282898, 0.139203906, 0, 0.99026376, 0, 1, 0, -0.99026376, 0, 0.139203906)
+            CFrameMonster = CFrame.new(1068.664306640625, 137.61428833007812, 1322.1060791015625)
+        elseif Lv == 800 or Lv <= 874 then
+            Monster = "Factory Staff"
             NameQuest = "Area2Quest"
-            QuestLv = 2
-            NameMon = "Factory Staff"
-            CFrameQ = CFrame.new(638.43811, 71.769989, 918.282898, 0.139203906, 0, 0.99026376, 0, 1, 0, -0.99026376, 0, 0.139203906)
-            CFrameMon = CFrame.new(336.74585, 73.1620483, -224.129272, 0.993632793, 3.40154607e-08, 0.112668738, -3.87658332e-08, 1, 3.99718729e-08, -0.112668738, -4.40850592e-08, 0.993632793)
-            
-            if SelectMonster == "Factory Staff" then
-            else
-                Next_Level_X = 875
-            end
-            if game.Players.LocalPlayer.Data.Level.Value >= 850 then
-                SelectBoss_P = "Jeremy"
-            end
-            SelectMonster = "Swan Pirate"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 875 or game.Players.LocalPlayer.Data.Level.Value <= 899 or SelectMonster == "Marine Lieutenant" then -- Marine Lieutenant
-            Ms = "Marine Lieutenant"
+            LvQuest = 2
+            NameMonster = "Factory Staff"
+            CFrameQuest = CFrame.new(632.698608, 73.1055908, 918.666321, -0.0319722369, 8.96074881e-10, -0.999488771, 1.36326533e-10, 1, 8.92172336e-10, 0.999488771, -1.07732087e-10, -0.0319722369)
+            CFrameMonster = CFrame.new(73.07867431640625, 81.86344146728516, -27.470672607421875)
+        elseif Lv == 875 or Lv <= 899 then
+            Monster = "Marine Lieutenant"
+            LvQuest = 1
             NameQuest = "MarineQuest3"
-            QuestLv = 1
-            NameMon = "Marine Lieutenant"
-            CFrameQ = CFrame.new(-2440.79639, 71.7140732, -3216.06812, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
-            CFrameMon = CFrame.new(-2842.69922, 72.9919434, -2901.90479, -0.762281299, 0, -0.64724648, 0, 1.00000012, 0, 0.64724648, 0, -0.762281299)
-            
-            if SelectMonster == "Marine Lieutenant" then
-            else
-                Next_Level_X = 900
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 900 or game.Players.LocalPlayer.Data.Level.Value <= 949 or SelectMonster == "Marine Captain" then -- Marine Captain
-            Ms = "Marine Captain"
+            NameMonster = "Marine Lieutenant"
+            CFrameQuest = CFrame.new(-2440.79639, 71.7140732, -3216.06812, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+            CFrameMonster = CFrame.new(-2821.372314453125, 75.89727783203125, -3070.089111328125)
+        elseif Lv == 900 or Lv <= 949 then
+            Monster = "Marine Captain"
+            LvQuest = 2
             NameQuest = "MarineQuest3"
-            QuestLv = 2
-            NameMon = "Marine Captain"
-            CFrameQ = CFrame.new(-2440.79639, 71.7140732, -3216.06812, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
-            CFrameMon = CFrame.new(-1814.70313, 72.9919434, -3208.86621, -0.900422215, 7.93464423e-08, -0.435017526, 3.68856199e-08, 1, 1.06050372e-07, 0.435017526, 7.94441988e-08, -0.900422215)
-            if game.Players.LocalPlayer.Data.Level.Value >= 925 then
-                SelectBoss_P = "Fajita"
-            end
-            if SelectMonster == "Marine Captain" then
-            else
-                Next_Level_X = 950
-            end
-            SelectMonster = "Marine Lieutenant"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 950 or game.Players.LocalPlayer.Data.Level.Value <= 974 or SelectMonster == "Zombie" then -- Zombie
-            Ms = "Zombie"
+            NameMonster = "Marine Captain"
+            CFrameQuest = CFrame.new(-2440.79639, 71.7140732, -3216.06812, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+            CFrameMonster = CFrame.new(-1861.2310791015625, 80.17658233642578, -3254.697509765625)
+        elseif Lv == 950 or Lv <= 974 then
+            Monster = "Zombie"
+            LvQuest = 1
             NameQuest = "ZombieQuest"
-            QuestLv = 1
-            NameMon = "Zombie"
-            CFrameQ = CFrame.new(-5497.06152, 47.5923004, -795.237061, -0.29242146, 0, -0.95628953, 0, 1, 0, 0.95628953, 0, -0.29242146)
-            CFrameMon = CFrame.new(-5649.23438, 126.0578, -737.773743, 0.355238914, -8.10359282e-08, 0.934775114, 1.65461245e-08, 1, 8.04023372e-08, -0.934775114, -1.3095117e-08, 0.355238914)
-            
-            if SelectMonster == "Zombie" then
-            else
-                Next_Level_X = 975
-            end
-            Bypass_TP_Dis = true
-        elseif game.Players.LocalPlayer.Data.Level.Value == 975 or game.Players.LocalPlayer.Data.Level.Value <= 999 or SelectMonster == "Vampire" then -- Vampire
-            Ms = "Vampire"
+            NameMonster = "Zombie"
+            CFrameQuest = CFrame.new(-5497.06152, 47.5923004, -795.237061, -0.29242146, 0, -0.95628953, 0, 1, 0, 0.95628953, 0, -0.29242146)
+            CFrameMonster = CFrame.new(-5657.77685546875, 78.96973419189453, -928.68701171875)
+        elseif Lv == 975 or Lv <= 999 then
+            Monster = "Vampire"
+            LvQuest = 2
             NameQuest = "ZombieQuest"
-            QuestLv = 2
-            NameMon = "Vampire"
-            CFrameQ = CFrame.new(-5497.06152, 47.5923004, -795.237061, -0.29242146, 0, -0.95628953, 0, 1, 0, 0.95628953, 0, -0.29242146)
-            CFrameMon = CFrame.new(-6030.32031, 0.4377408, -1313.5564, -0.856965423, 3.9138893e-08, -0.515373945, -1.12178942e-08, 1, 9.45958547e-08, 0.515373945, 8.68467822e-08, -0.856965423)
-            
-            if SelectMonster == "Vampire" then
-            else
-                Next_Level_X = 1000
-            end
-            Bypass_TP_Dis = true
-            SelectMonster = "Zombie"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1000 or game.Players.LocalPlayer.Data.Level.Value <= 1049 or SelectMonster == "Snow Trooper" then -- Snow Trooper **
-            Ms = "Snow Trooper"
+            NameMonster = "Vampire"
+            CFrameQuest = CFrame.new(-5497.06152, 47.5923004, -795.237061, -0.29242146, 0, -0.95628953, 0, 1, 0, 0.95628953, 0, -0.29242146)
+            CFrameMonster = CFrame.new(-6037.66796875, 32.18463897705078, -1340.6597900390625)
+        elseif Lv == 1000 or Lv <= 1049 then
+            Monster = "Snow Trooper"
+            LvQuest = 1
             NameQuest = "SnowMountainQuest"
-            QuestLv = 1
-            NameMon = "Snow Trooper"
-            CFrameQ = CFrame.new(609.858826, 400.119904, -5372.25928, -0.374604106, 0, 0.92718488, 0, 1, 0, -0.92718488, 0, -0.374604106)
-            CFrameMon = CFrame.new(621.003418, 391.361053, -5335.43604, 0.481644779, 0, 0.876366913, 0, 1, 0, -0.876366913, 0, 0.481644779)
-            
-            if SelectMonster == "Snow Trooper" then
-            else
-                Next_Level_X = 1050
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1050 or game.Players.LocalPlayer.Data.Level.Value <= 1099 or SelectMonster == "Winter Warrior" then -- Winter Warrior
-            Ms = "Winter Warrior"
+            NameMonster = "Snow Trooper"
+            CFrameQuest = CFrame.new(609.858826, 400.119904, -5372.25928, -0.374604106, 0, 0.92718488, 0, 1, 0, -0.92718488, 0, -0.374604106)
+            CFrameMonster = CFrame.new(549.1473388671875, 427.3870544433594, -5563.69873046875)
+        elseif Lv == 1050 or Lv <= 1099 then
+            Monster = "Winter Warrior"
+            LvQuest = 2
             NameQuest = "SnowMountainQuest"
-            QuestLv = 2
-            NameMon = "Winter Warrior"
-            CFrameQ = CFrame.new(609.858826, 400.119904, -5372.25928, -0.374604106, 0, 0.92718488, 0, 1, 0, -0.92718488, 0, -0.374604106)
-            CFrameMon = CFrame.new(1295.62683, 429.447784, -5087.04492, -0.698032081, -8.28980049e-08, -0.71606636, -1.98835952e-08, 1, -9.63858184e-08, 0.71606636, -5.30424877e-08, -0.698032081)
-            
-            if SelectMonster == "Winter Warrior" then
-            else
-                Next_Level_X = 1100
-            end
-            SelectMonster = "Snow Trooper"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1100 or game.Players.LocalPlayer.Data.Level.Value <= 1124 or SelectMonster == "Lab Subordinate" then -- Lab Subordinate
-            Ms = "Lab Subordinate"
+            NameMonster = "Winter Warrior"
+            CFrameQuest = CFrame.new(609.858826, 400.119904, -5372.25928, -0.374604106, 0, 0.92718488, 0, 1, 0, -0.92718488, 0, -0.374604106)
+            CFrameMonster = CFrame.new(1142.7451171875, 475.6398010253906, -5199.41650390625)
+        elseif Lv == 1100 or Lv <= 1124 then
+            Monster = "Lab Subordinate"
+            LvQuest = 1
             NameQuest = "IceSideQuest"
-            QuestLv = 1
-            NameMon = "Lab Subordinate"
-            CFrameQ = CFrame.new(-6064.06885, 15.2422857, -4902.97852, 0.453972578, -0, -0.891015649, 0, 1, -0, 0.891015649, 0, 0.453972578)
-            CFrameMon = CFrame.new(-5769.2041, 37.9288292, -4468.38721, -0.569419742, -2.49055017e-08, 0.822046936, -6.96206541e-08, 1, -1.79282633e-08, -0.822046936, -6.74401548e-08, -0.569419742)
-            
-            if SelectMonster == "Lab Subordinate" then
-            else
-                Next_Level_X = 1125
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1125 or game.Players.LocalPlayer.Data.Level.Value <= 1174 or SelectMonster == "Horned Warrior" then -- Horned Warrior
-            if game.Players.LocalPlayer.Data.Level.Value >= 1150 then
-                SelectBoss_P = "Smoke Admiral"
-            end
-            Ms = "Horned Warrior"
+            NameMonster = "Lab Subordinate"
+            CFrameQuest = CFrame.new(-6064.06885, 15.2422857, -4902.97852, 0.453972578, -0, -0.891015649, 0, 1, -0, 0.891015649, 0, 0.453972578)
+            CFrameMonster = CFrame.new(-5707.4716796875, 15.951709747314453, -4513.39208984375)
+        elseif Lv == 1125 or Lv <= 1174 then
+            Monster = "Horned Warrior"
+            LvQuest = 2
             NameQuest = "IceSideQuest"
-            QuestLv = 2
-            NameMon = "Horned Warrior"
-            CFrameQ = CFrame.new(-6064.06885, 15.2422857, -4902.97852, 0.453972578, -0, -0.891015649, 0, 1, -0, 0.891015649, 0, 0.453972578)
-            CFrameMon = CFrame.new(-6401.27979, 15.9775667, -5948.24316, 0.388303697, 0, -0.921531856, 0, 1, 0, 0.921531856, 0, 0.388303697)
-            
-            if SelectMonster == "Horned Warrior" then
-            else
-                Next_Level_X = 1175
-            end
-
-            SelectMonster = "Lab Subordinate"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1175 or game.Players.LocalPlayer.Data.Level.Value <= 1199 or SelectMonster == "Magma Ninja" then -- Magma Ninja
-            Ms = "Magma Ninja"
+            NameMonster = "Horned Warrior"
+            CFrameQuest = CFrame.new(-6064.06885, 15.2422857, -4902.97852, 0.453972578, -0, -0.891015649, 0, 1, -0, 0.891015649, 0, 0.453972578)
+            CFrameMonster = CFrame.new(-6341.36669921875, 15.951770782470703, -5723.162109375)
+        elseif Lv == 1175 or Lv <= 1199 then
+            Monster = "Magma Ninja"
+            LvQuest = 1
             NameQuest = "FireSideQuest"
-            QuestLv = 1
-            NameMon = "Magma Ninja"
-            CFrameQ = CFrame.new(-5428.03174, 15.0622921, -5299.43457, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
-            CFrameMon = CFrame.new(-5466.06445, 57.6952019, -5837.42822, -0.988835871, 0, -0.149006829, 0, 1, 0, 0.149006829, 0, -0.988835871)
-            
-            if SelectMonster == "Magma Ninja" then
-            else
-                Next_Level_X = 1200
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1200 or game.Players.LocalPlayer.Data.Level.Value <= 1249 or SelectMonster == "Lava Pirate" then 
-            Ms = "Lava Pirate"
+            NameMonster = "Magma Ninja"
+            CFrameQuest = CFrame.new(-5428.03174, 15.0622921, -5299.43457, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
+            CFrameMonster = CFrame.new(-5449.6728515625, 76.65874481201172, -5808.20068359375)
+        elseif Lv == 1200 or Lv <= 1249 then
+            Monster = "Lava Pirate"
+            LvQuest = 2
             NameQuest = "FireSideQuest"
-            QuestLv = 2
-            NameMon = "Lava Pirate"
-            CFrameQ = CFrame.new(-5431.09473, 15.9868021, -5296.53223, 0.831796765, 1.15322464e-07, -0.555080295, -1.10814341e-07, 1, 4.17010995e-08, 0.555080295, 2.68240168e-08, 0.831796765)
-            CFrameMon = CFrame.new(-5169.71729, 34.1234779, -4669.73633, -0.196780294, 0, 0.98044765, 0, 1.00000012, -0, -0.98044765, 0, -0.196780294)
-            
-            if SelectMonster == "Lava Pirate" then
-            else
-                Next_Level_X = 1250
-            end
-            SelectMonster = "Magma Ninja"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1250 or game.Players.LocalPlayer.Data.Level.Value <= 1274 or SelectMonster == "Ship Deckhand" then 
-            Ms = "Ship Deckhand"
+            NameMonster = "Lava Pirate"
+            CFrameQuest = CFrame.new(-5428.03174, 15.0622921, -5299.43457, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
+            CFrameMonster = CFrame.new(-5213.33154296875, 49.73788070678711, -4701.451171875)
+        elseif Lv == 1250 or Lv <= 1274 then
+            Monster = "Ship Deckhand"
+            LvQuest = 1
             NameQuest = "ShipQuest1"
-            QuestLv = 1
-            NameMon = "Ship Deckhand"
-            CFrameQ = CFrame.new(1037.80127, 125.092171, 32911.6016, -0.244533166, -0, -0.969640911, -0, 1.00000012, -0, 0.96964103, 0, -0.244533136)
-            CFrameMon = CFrame.new(1163.80872, 138.288452, 33058.4258, -0.998580813, 5.49076979e-08, -0.0532564968, 5.57436763e-08, 1, -1.42118655e-08, 0.0532564968, -1.71604082e-08, -0.998580813)
-            if SelectMonster == "Ship Deckhand" then
-            else
-                Next_Level_X = 1275
+            NameMonster = "Ship Deckhand"
+            CFrameQuest = CFrame.new(1037.80127, 125.092171, 32911.6016)         
+            CFrameMonster = CFrame.new(1212.0111083984375, 150.79205322265625, 33059.24609375)    
+            if _G.AutoFarm and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
             end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1275 or game.Players.LocalPlayer.Data.Level.Value <= 1299 or SelectMonster == "Ship Engineer" then 
-            Ms = "Ship Engineer"
+        elseif Lv == 1275 or Lv <= 1299 then
+            Monster = "Ship Engineer"
+            LvQuest = 2
             NameQuest = "ShipQuest1"
-            QuestLv = 2
-            NameMon = "Ship Engineer"
-            CFrameQ = CFrame.new(1037.80127, 125.092171, 32911.6016, -0.244533166, -0, -0.969640911, -0, 1.00000012, -0, 0.96964103, 0, -0.244533136)
-            CFrameMon = CFrame.new(921.30249023438, 125.400390625, 32937.34375)
-            if SelectMonster == "Ship Engineer" then
-            else
-                Next_Level_X = 1300
-            end
-            SelectMonster = "Ship Deckhand"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1300 or game.Players.LocalPlayer.Data.Level.Value <= 1324 or SelectMonster == "Ship Steward" then 
-            Ms = "Ship Steward"
+            NameMonster = "Ship Engineer"
+            CFrameQuest = CFrame.new(1037.80127, 125.092171, 32911.6016)   
+            CFrameMonster = CFrame.new(919.4786376953125, 43.54401397705078, 32779.96875)   
+            if _G.AutoFarmLevel and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+            end             
+        elseif Lv == 1300 or Lv <= 1324 then
+            Monster = "Ship Steward"
+            LvQuest = 1
             NameQuest = "ShipQuest2"
-            QuestLv = 1
-            NameMon = "Ship Steward"
-            CFrameQ = CFrame.new(968.80957, 125.092171, 33244.125, -0.869560242, 1.51905191e-08, -0.493826836, 1.44108379e-08, 1, 5.38534195e-09, 0.493826836, -2.43357912e-09, -0.869560242)
-            CFrameMon = CFrame.new(917.96057128906, 136.89932250977, 33343.4140625)
-            if SelectMonster == "Ship Steward" then
-            else
-                Next_Level_X = 1325
+            NameMonster = "Ship Steward"
+            CFrameQuest = CFrame.new(968.80957, 125.092171, 33244.125)         
+            CFrameMonster = CFrame.new(919.4385375976562, 129.55599975585938, 33436.03515625)      
+            if _G.AutoFarmLevel and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
             end
-            SelectMonster = "Ship Deckhand"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1325 or game.Players.LocalPlayer.Data.Level.Value <= 1349 or SelectMonster == "Ship Officer" then 
-            Ms = "Ship Officer"
+        elseif Lv == 1325 or Lv <= 1349 then
+            Monster = "Ship Officer"
+            LvQuest = 2
             NameQuest = "ShipQuest2"
-            QuestLv = 2
-            NameMon = "Ship Officer"
-            CFrameQ = CFrame.new(968.80957, 125.092171, 33244.125, -0.869560242, 1.51905191e-08, -0.493826836, 1.44108379e-08, 1, 5.38534195e-09, 0.493826836, -2.43357912e-09, -0.869560242)
-            CFrameMon = CFrame.new(944.44964599609, 181.40081787109, 33278.9453125)
-            if SelectMonster == "Ship Officer" then
-            else
-                Next_Level_X = 1350
+            NameMonster = "Ship Officer"
+            CFrameQuest = CFrame.new(968.80957, 125.092171, 33244.125)
+            CFrameMonster = CFrame.new(1036.0179443359375, 181.4390411376953, 33315.7265625)
+            if _G.AutoFarmLevel and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
             end
-            SelectMonster = "Ship Steward"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1350 or game.Players.LocalPlayer.Data.Level.Value <= 1374 or SelectMonster == "Arctic Warrior" then 
-            Ms = "Arctic Warrior"
+        elseif Lv == 1350 or Lv <= 1374 then
+            Monster = "Arctic Warrior"
+            LvQuest = 1
             NameQuest = "FrostQuest"
-            QuestLv = 1
-            NameMon = "Arctic Warrior"
-            CFrameQ = CFrame.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909)
-            CFrameMon = CFrame.new(5878.23486, 81.3886948, -6136.35596, -0.451037169, 2.3908234e-07, 0.892505825, -1.08168464e-07, 1, -3.22542007e-07, -0.892505825, -2.4201924e-07, -0.451037169)
-            
-            if SelectMonster == "Arctic Warrior" then
-            else
-                Next_Level_X = 1375
+            NameMonster = "Arctic Warrior"
+            CFrameQuest = CFrame.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909)
+            CFrameMonster = CFrame.new(5966.24609375, 62.97002029418945, -6179.3828125)
+            if _G.AutoFarmLevel and (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 10000 then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909))
             end
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1375 or game.Players.LocalPlayer.Data.Level.Value <= 1424 or SelectMonster == "Snow Lurker" then -- Snow Lurker
-            if game.Players.LocalPlayer.Data.Level.Value >= 1400 then
-                SelectBoss_P = "Awakened Ice Admiral"
-            end
-            Ms = "Snow Lurker"
+        elseif Lv == 1375 or Lv <= 1424 then
+            Monster = "Snow Lurker"
+            LvQuest = 2
             NameQuest = "FrostQuest"
-            QuestLv = 2
-            NameMon = "Snow Lurker"
-            CFrameQ = CFrame.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909)
-            CFrameMon = CFrame.new(5513.36865, 60.546711, -6809.94971, -0.958693981, -1.65617333e-08, 0.284439981, -4.07668654e-09, 1, 4.44854642e-08, -0.284439981, 4.14883701e-08, -0.958693981)
-            
-            if SelectMonster == "Snow Lurker" then
-            else
-                Next_Level_X = 1450
-            end
-        
-            SelectMonster = "Arctic Warrior"
-        elseif game.Players.LocalPlayer.Data.Level.Value == 1425 or game.Players.LocalPlayer.Data.Level.Value <= 1449 or SelectMonster == "Sea Soldier" then -- Sea Soldier
-            Ms = "Sea Soldier"
+            NameMonster = "Snow Lurker"
+            CFrameQuest = CFrame.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909)
+            CFrameMonster = CFrame.new(5407.07373046875, 69.19437408447266, -6880.88037109375)
+        elseif Lv == 1425 or Lv <= 1449 then
+            Monster = "Sea Soldier"
+            LvQuest = 1
             NameQuest = "ForgottenQuest"
-            QuestLv = 1
-            NameMon = "Sea Soldier"
-            CFrameQ = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
-            CFrameMon = CFrame.new(-3115.78223, 63.8785706, -9808.38574, -0.913427353, 3.11199457e-08, 0.407000452, 7.79564235e-09, 1, -5.89660658e-08, -0.407000452, -5.06883708e-08, -0.913427353)
-            
-            if SelectMonster == "Sea Soldier" then
-            else
-                Next_Level_X = 1450
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1450 or SelectMonster == "Water Fighter" then -- Water Fighter
-            if game.Players.LocalPlayer.Data.Level.Value >= 1475 then
-                SelectBoss_P = "Tide Keeper"
-            end
-            Ms = "Water Fighter"
+            NameMonster = "Sea Soldier"
+            CFrameQuest = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
+            CFrameMonster = CFrame.new(-3028.2236328125, 64.67451477050781, -9775.4267578125)
+        elseif Lv >= 1450 then
+            Monster = "Water Fighter"
+            LvQuest = 2
             NameQuest = "ForgottenQuest"
-            QuestLv = 2
-            NameMon = "Water Fighter"
-            CFrameQ = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
-            CFrameMon = CFrame.new(-3212.99683, 263.809296, -10551.8799, 0.742111444, -5.59139615e-08, -0.670276582, 1.69155214e-08, 1, -6.46908234e-08, 0.670276582, 3.66697037e-08, 0.742111444)
-            
-            if SelectMonster == "Water Fighter" then
-            else
-                Next_Level_X = 9999
-            end
-            SelectMonster = "Sea Soldier"
+            NameMonster = "Water Fighter"
+            CFrameQuest = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
+            CFrameMonster = CFrame.new(-3352.9013671875, 285.01556396484375, -10534.841796875)
         end
-    end
-    if Three_World then
-        if game.Players.LocalPlayer.Data.Level.Value >= 1500 and game.Players.LocalPlayer.Data.Level.Value <= 1524 or SelectMonster == "Pirate Millionaire" then -- Pirate Millionaire
-            Ms = "Pirate Millionaire"
+    elseif World3 then
+        if Lv == 1500 or Lv <= 1524 then
+            Monster = "Pirate Millionaire"
+            LvQuest = 1
             NameQuest = "PiratePortQuest"
-            QuestLv = 1
-            NameMon = "Pirate Millionaire"
-            CFrameQ = CFrame.new(-290.074677, 42.9034653, 5581.58984, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
-            CFrameMon = CFrame.new(81.164993286133, 43.755737304688, 5724.7021484375)
-            
-            if SelectMonster == "Pirate Millionaire" then
-            else
-                Next_Level_X = 1525
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1525 and game.Players.LocalPlayer.Data.Level.Value <= 1574 or SelectMonster == "Pistol Billionaire" then -- Pistol Billionaire
-            if game.Players.LocalPlayer.Data.Level.Value >= 1550 then
-                SelectBoss_P = "Stone"
-            end
-            Ms = "Pistol Billionaire"
+            NameMonster = "Pirate Millionaire"
+            CFrameQuest = CFrame.new(-290.074677, 42.9034653, 5581.58984, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+            CFrameMonster = CFrame.new(-245.9963836669922, 47.30615234375, 5584.1005859375)
+        elseif Lv == 1525 or Lv <= 1574 then
+            Monster = "Pistol Billionaire"
+            LvQuest = 2
             NameQuest = "PiratePortQuest"
-            QuestLv = 2
-            NameMon = "Pistol Billionaire"
-            CFrameQ = CFrame.new(-290.074677, 42.9034653, 5581.58984, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
-            CFrameMon = CFrame.new(81.164993286133, 43.755737304688, 5724.7021484375)
-            
-            if SelectMonster == "Pistol Billionaire" then
-            else
-                Next_Level_X = 1575 
-            end
-            
-            SelectMonster = "Pirate Millionaire"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1575 and game.Players.LocalPlayer.Data.Level.Value <= 1599 or SelectMonster == "Dragon Crew Warrior" then -- Dragon Crew Warrior
-            Ms = "Dragon Crew Warrior"
+            NameMonster = "Pistol Billionaire"
+            CFrameQuest = CFrame.new(-290.074677, 42.9034653, 5581.58984, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+            CFrameMonster = CFrame.new(-187.3301544189453, 86.23987579345703, 6013.513671875)
+        elseif Lv == 1575 or Lv <= 1599 then
+            Monster = "Dragon Crew Warrior"
+            LvQuest = 1
             NameQuest = "AmazonQuest"
-            QuestLv = 1
-            NameMon = "Dragon Crew Warrior"
-            CFrameQ = CFrame.new(5832.83594, 51.6806107, -1101.51563, 0.898790359, -0, -0.438378751, 0, 1, -0, 0.438378751, 0, 0.898790359)
-            CFrameMon = CFrame.new(6241.9951171875, 51.522083282471, -1243.9771728516)
-            
-            if SelectMonster == "Dragon Crew Warrior" then
-            else
-                Next_Level_X = 1600
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1600 and game.Players.LocalPlayer.Data.Level.Value <= 1624 or SelectMonster == "Dragon Crew Archer" then -- Dragon Crew Archer
-            Ms = "Dragon Crew Archer"
+            NameMonster = "Dragon Crew Warrior"
+            CFrameQuest = CFrame.new(5832.83594, 51.6806107, -1101.51563, 0.898790359, -0, -0.438378751, 0, 1, -0, 0.438378751, 0, 0.898790359)
+            CFrameMonster = CFrame.new(6141.140625, 51.35136413574219, -1340.738525390625)
+        elseif Lv == 1600 or Lv <= 1624 then 
+            Monster = "Dragon Crew Archer"
             NameQuest = "AmazonQuest"
-            QuestLv = 2
-            NameMon = "Dragon Crew Archer"
-            CFrameQ = CFrame.new(5832.83594, 51.6806107, -1101.51563, 0.898790359, -0, -0.438378751, 0, 1, -0, 0.438378751, 0, 0.898790359)
-            CFrameMon = CFrame.new(6488.9155273438, 383.38375854492, -110.66246032715)
-            
-            if SelectMonster == "Dragon Crew Archer" then
-            else
-                Next_Level_X = 1625
-            end
-            SelectMonster = "Dragon Crew Warrior"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1625 and game.Players.LocalPlayer.Data.Level.Value <= 1649 or SelectMonster == "Female Islander" then 
-            Ms = "Female Islander"
+            LvQuest = 2
+            NameMonster = "Dragon Crew Archer"
+            CFrameQuest = CFrame.new(5833.1147460938, 51.60498046875, -1103.0693359375)
+            CFrameMonster = CFrame.new(6616.41748046875, 441.7670593261719, 446.0469970703125)
+        elseif Lv == 1625 or Lv <= 1649 then
+            Monster = "Female Islander"
             NameQuest = "AmazonQuest2"
-            QuestLv = 1
-            NameMon = "Female Islander"
-            CFrameQ = CFrame.new(5448.86133, 601.516174, 751.130676, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-            CFrameMon = CFrame.new(4770.4990234375, 758.95520019531, 1069.8680419922)
-            
-            if SelectMonster == "Female Islander" then
-            else
-                Next_Level_X = 1650
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1650 and game.Players.LocalPlayer.Data.Level.Value <= 1699 or SelectMonster == "Giant Islander" then -- Giant Islander
-            Ms = "Giant Islander"
+            LvQuest = 1
+            NameMonster = "Female Islander"
+            CFrameQuest = CFrame.new(5446.8793945313, 601.62945556641, 749.45672607422)
+            CFrameMonster = CFrame.new(4685.25830078125, 735.8078002929688, 815.3425903320312)
+        elseif Lv == 1650 or Lv <= 1699 then 
+            Monster = "Giant Islander"
             NameQuest = "AmazonQuest2"
-            QuestLv = 2
-            NameMon = "Giant Islander"
-            CFrameQ = CFrame.new(5448.86133, 601.516174, 751.130676, 0, 0, 1, 0, 1, -0, -1, 0, 0)
-            CFrameMon = CFrame.new(4530.3540039063, 656.75695800781, -131.60952758789)
-            if game.Players.LocalPlayer.Data.Level.Value >= 1675 then
-                SelectBoss_P = "Island Empress"
-            end
-            if SelectMonster == "Giant Islander" then
-            else
-                Next_Level_X = 1700
-            end
-        
-            SelectMonster = "Female Islander"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1700 and game.Players.LocalPlayer.Data.Level.Value <= 1774 or SelectMonster == "Marine Commodore" then -- Marine Commodore
-            Ms = "Marine Commodore"
+            LvQuest = 2
+            NameMonster = "Giant Islander"
+            CFrameQuest = CFrame.new(5446.8793945313, 601.62945556641, 749.45672607422)
+            CFrameMonster = CFrame.new(4729.09423828125, 590.436767578125, -36.97627639770508)
+        elseif Lv == 1700 or Lv <= 1724 then
+            Monster = "Marine Commodore"
+            LvQuest = 1
             NameQuest = "MarineTreeIsland"
-            QuestLv = 1
-            NameMon = "Marine Commodore"
-            CFrameQ = CFrame.new(2180.54126, 27.8156815, -6741.5498, -0.965929747, 0, 0.258804798, 0, 1, 0, -0.258804798, 0, -0.965929747)
-            CFrameMon = CFrame.new(2490.0844726563, 190.4232635498, -7160.0502929688)
-            if game.Players.LocalPlayer.Data.Level.Value >= 1750 then
-                SelectBoss_P = "Kilo Admiral"
-            end
-            if SelectMonster == "Marine Commodore" then
-            else
-                Next_Level_X = 1775
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1775 and game.Players.LocalPlayer.Data.Level.Value <= 1799 or SelectMonster == "Fishman Raider" then -- Fishman Raider
-            Ms = "Fishman Raider"
+            NameMonster = "Marine Commodore"
+            CFrameQuest = CFrame.new(2180.54126, 27.8156815, -6741.5498, -0.965929747, 0, 0.258804798, 0, 1, 0, -0.258804798, 0, -0.965929747)
+            CFrameMonster = CFrame.new(2286.0078125, 73.13391876220703, -7159.80908203125)
+        elseif Lv == 1725 or Lv <= 1774 then
+            Monster = "Marine Rear Admiral"
+            NameMonster = "Marine Rear Admiral"
+            NameQuest = "MarineTreeIsland"
+            LvQuest = 2
+            CFrameQuest = CFrame.new(2179.98828125, 28.731239318848, -6740.0551757813)
+            CFrameMonster = CFrame.new(3656.773681640625, 160.52406311035156, -7001.5986328125)
+        elseif Lv == 1775 or Lv <= 1799 then
+            Monster = "Fishman Raider"
+            LvQuest = 1
             NameQuest = "DeepForestIsland3"
-            QuestLv = 1
-            NameMon = "Fishman Raider"
-            CFrameQ = CFrame.new(-10581.6563, 330.872955, -8761.18652, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
-            CFrameMon = CFrame.new(-10322.400390625, 390.94473266602, -8580.0908203125)
-            
-            if SelectMonster == "Fishman Raider" then
-            else
-                Next_Level_X = 1800
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1800 and game.Players.LocalPlayer.Data.Level.Value <= 1824 or SelectMonster == "Fishman Captain" then -- Fishman Captain
-            Ms = "Fishman Captain"
+            NameMonster = "Fishman Raider"
+            CFrameQuest = CFrame.new(-10581.6563, 330.872955, -8761.18652, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)   
+            CFrameMonster = CFrame.new(-10407.5263671875, 331.76263427734375, -8368.5166015625)
+        elseif Lv == 1800 or Lv <= 1824 then
+            Monster = "Fishman Captain"
+            LvQuest = 2
             NameQuest = "DeepForestIsland3"
-            QuestLv = 2
-            NameMon = "Fishman Captain"
-            CFrameQ = CFrame.new(-10581.6563, 330.872955, -8761.18652, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
-            CFrameMon = CFrame.new(-11194.541992188, 442.02795410156, -8608.806640625)
-            
-            if SelectMonster == "Fishman Captain" then
-            else
-                Next_Level_X = 1825
-            end
-            SelectMonster = "Fishman Raider"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1825 and game.Players.LocalPlayer.Data.Level.Value <= 1849 or SelectMonster == "Forest Pirate" then -- Forest Pirate
-            Ms = "Forest Pirate"
+            NameMonster = "Fishman Captain"
+            CFrameQuest = CFrame.new(-10581.6563, 330.872955, -8761.18652, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)   
+            CFrameMonster = CFrame.new(-10994.701171875, 352.38140869140625, -9002.1103515625) 
+        elseif Lv == 1825 or Lv <= 1849 then
+            Monster = "Forest Pirate"
+            LvQuest = 1
             NameQuest = "DeepForestIsland"
-            QuestLv = 1
-            NameMon = "Forest Pirate"
-            CFrameQ = CFrame.new(-13234.04, 331.488495, -7625.40137, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
-            CFrameMon = CFrame.new(-13225.809570313, 428.19387817383, -7753.1245117188)
-            
-            if SelectMonster == "Forest Pirate" then
-            else
-                Next_Level_X = 1850
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1850 and game.Players.LocalPlayer.Data.Level.Value <= 1899 or SelectMonster == "Mythological Pirate" then -- Mythological Pirate
-            Ms = "Mythological Pirate"
+            NameMonster = "Forest Pirate"
+            CFrameQuest = CFrame.new(-13234.04, 331.488495, -7625.40137, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
+            CFrameMonster = CFrame.new(-13274.478515625, 332.3781433105469, -7769.58056640625)
+        elseif Lv == 1850 or Lv <= 1899 then
+            Monster = "Mythological Pirate"
+            LvQuest = 2
             NameQuest = "DeepForestIsland"
-            QuestLv = 2
-            NameMon = "Mythological Pirate"
-            CFrameQ = CFrame.new(-13234.04, 331.488495, -7625.40137, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
-            CFrameMon = CFrame.new(-13869.172851563, 564.95251464844, -7084.4135742188)
-            if game.Players.LocalPlayer.Data.Level.Value >= 1875 then
-                SelectBoss_P = "Captain Elephant" 
-            end
-            if SelectMonster == "Mythological Pirate" then
-            else
-                Next_Level_X = 1900
-            end
-        
-            SelectMonster = "Forest Pirate"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1900 and game.Players.LocalPlayer.Data.Level.Value <= 1924 or SelectMonster == "Jungle Pirate" then -- Jungle Pirate
-            Ms = "Jungle Pirate"
+            NameMonster = "Mythological Pirate"
+            CFrameQuest = CFrame.new(-13234.04, 331.488495, -7625.40137, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)   
+            CFrameMonster = CFrame.new(-13680.607421875, 501.08154296875, -6991.189453125)
+        elseif Lv == 1900 or Lv <= 1924 then
+            Monster = "Jungle Pirate"
+            LvQuest = 1
             NameQuest = "DeepForestIsland2"
-            QuestLv = 1
-            NameMon = "Jungle Pirate"
-            CFrameQ = CFrame.new(-12680.3818, 389.971039, -9902.01953, -0.0871315002, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, -0.0871315002)
-            CFrameMon = CFrame.new(-11982.221679688, 376.32522583008, -10451.415039063)
-            
-            if SelectMonster == "Jungle Pirate" then
-            else
-                Next_Level_X = 1925
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1925 and game.Players.LocalPlayer.Data.Level.Value <= 1974 or SelectMonster == "Musketeer Pirate" then -- Musketeer Pirate
-            Ms = "Musketeer Pirate"
+            NameMonster = "Jungle Pirate"
+            CFrameQuest = CFrame.new(-12680.3818, 389.971039, -9902.01953, -0.0871315002, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, -0.0871315002)
+            CFrameMonster = CFrame.new(-12256.16015625, 331.73828125, -10485.8369140625)
+        elseif Lv == 1925 or Lv <= 1974 then
+            Monster = "Musketeer Pirate"
+            LvQuest = 2
             NameQuest = "DeepForestIsland2"
-            QuestLv = 2
-            NameMon = "Musketeer Pirate"
-            CFrameQ = CFrame.new(-12680.3818, 389.971039, -9902.01953, -0.0871315002, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, -0.0871315002)
-            CFrameMon = CFrame.new(-13282.3046875, 496.23684692383, -9565.150390625)
-            
-            if SelectMonster == "Musketeer Pirate" then
-            else
-                Next_Level_X = 1975
-            end
-            if game.Players.LocalPlayer.Data.Level.Value >= 1950 then
-                SelectBoss_P = "Beautiful Pirate"
-            end
-            SelectMonster = "Jungle Pirate"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 1975 and game.Players.LocalPlayer.Data.Level.Value <= 1999 or SelectMonster == "Reborn Skeleton" then
-            Ms = "Reborn Skeleton"
+            NameMonster = "Musketeer Pirate"
+            CFrameQuest = CFrame.new(-12680.3818, 389.971039, -9902.01953, -0.0871315002, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, -0.0871315002)
+            CFrameMonster = CFrame.new(-13457.904296875, 391.545654296875, -9859.177734375)
+        elseif Lv == 1975 or Lv <= 1999 then
+            Monster = "Reborn Skeleton"
+            LvQuest = 1
             NameQuest = "HauntedQuest1"
-            QuestLv = 1
-            NameMon = "Reborn Skeleton"
-            CFrameQ = CFrame.new(-9480.8271484375, 142.13066101074, 5566.0712890625)
-            CFrameMon = CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188)
-            
-            if SelectMonster == "Reborn Skeleton" then
-            elseif not LevelMax then
-                Next_Level_X = 2000
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2000 and game.Players.LocalPlayer.Data.Level.Value <= 2024 or SelectMonster == "Living Zombie" then
-            Ms = "Living Zombie"
+            NameMonster = "Reborn Skeleton"
+            CFrameQuest = CFrame.new(-9479.2168, 141.215088, 5566.09277, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            CFrameMonster = CFrame.new(-8763.7236328125, 165.72299194335938, 6159.86181640625)
+        elseif Lv == 2000 or Lv <= 2024 then
+            Monster = "Living Zombie"
+            LvQuest = 2
             NameQuest = "HauntedQuest1"
-            QuestLv = 2
-            NameMon = "Living Zombie"
-            CFrameQ = CFrame.new(-9480.8271484375, 142.13066101074, 5566.0712890625)
-            CFrameMon = CFrame.new(-10125.234375, 183.94705200195, 6242.013671875)
-            
-            if SelectMonster == "Living Zombie" then
-            elseif not LevelMax then
-                Next_Level_X = 2025
-            end
-            SelectMonster = "Reborn Skeleton"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2025 and game.Players.LocalPlayer.Data.Level.Value <= 2049  or  SelectMonster == "Demonic Soul" then
-            Ms = "Demonic Soul"
+            NameMonster = "Living Zombie"
+            CFrameQuest = CFrame.new(-9479.2168, 141.215088, 5566.09277, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            CFrameMonster = CFrame.new(-10144.1318359375, 138.62667846679688, 5838.0888671875)
+        elseif Lv == 2025 or Lv <= 2049 then
+            Monster = "DeMonsteric Soul"
+            LvQuest = 1
             NameQuest = "HauntedQuest2"
-            QuestLv = 1
-            NameMon = "Demonic"
-            CFrameQ = CFrame.new(-9516.9931640625, 178.00651550293, 6078.4653320313)
-            CFrameMon = CFrame.new(-9712.03125, 204.69589233398, 6193.322265625)
-            
-            if SelectMonster == "Demonic Soul" then
-            else
-                Next_Level_X = 2050
-            end
-            SelectMonster = "Living Zombie"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2050 and game.Players.LocalPlayer.Data.Level.Value <= 2074 or SelectMonster == "Posessed Mummy" then
-            Ms = "Posessed Mummy"
+            NameMonster = "DeMonsteric Soul"
+            CFrameQuest = CFrame.new(-9516.99316, 172.017181, 6078.46533, 0, 0, -1, 0, 1, 0, 1, 0, 0) 
+            CFrameMonster = CFrame.new(-9505.8720703125, 172.10482788085938, 6158.9931640625)
+        elseif Lv == 2050 or Lv <= 2074 then
+            Monster = "Posessed Mummy"
+            LvQuest = 2
             NameQuest = "HauntedQuest2"
-            QuestLv = 2
-            NameMon = "Posessed Mummy"
-            CFrameQ = CFrame.new(-9516.9931640625, 178.00651550293, 6078.4653320313)
-            CFrameMon = CFrame.new(-9545.7763671875, 69.619895935059, 6339.5615234375)    
-            
-            if SelectMonster == "Posessed Mummy" then
-            else
-                Next_Level_X = 2075
-            end
-            SelectMonster = "Demonic Soul"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2075 and game.Players.LocalPlayer.Data.Level.Value <= 2099 or SelectMonster == "Peanut Scout" then
-            Ms = "Peanut Scout"
+            NameMonster = "Posessed Mummy"
+            CFrameQuest = CFrame.new(-9516.99316, 172.017181, 6078.46533, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMonster = CFrame.new(-9582.0224609375, 6.251527309417725, 6205.478515625)
+        elseif Lv == 2075 or Lv <= 2099 then
+            Monster = "Peanut Scout"
+            LvQuest = 1
             NameQuest = "NutsIslandQuest"
-            QuestLv = 1
-            NameMon = "Peanut Scout"
-            CFrameQ = CFrame.new(-2104.17163, 38.1299706, -10194.418, 0.758814394, -1.38604395e-09, 0.651306927, 2.85280208e-08, 1, -3.1108879e-08, -0.651306927, 4.21863646e-08, 0.758814394)
-            CFrameMon = CFrame.new(-2098.07544, 192.611862, -10248.8867, 0.983392298, -9.57031787e-08, 0.181492642, 8.7276355e-08, 1, 5.44169616e-08, -0.181492642, -3.76732068e-08, 0.983392298)
-            
-            if SelectMonster == "Peanut Scout" then
-            else
-                Next_Level_X = 2100
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2100 and game.Players.LocalPlayer.Data.Level.Value <= 2124 or SelectMonster == "Peanut President" then
-            Ms = "Peanut President"
+            NameMonster = "Peanut Scout"
+            CFrameQuest = CFrame.new(-2104.3908691406, 38.104167938232, -10194.21875, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMonster = CFrame.new(-2143.241943359375, 47.72198486328125, -10029.9951171875)
+        elseif Lv == 2100 or Lv <= 2124 then
+            Monster = "Peanut President"
+            LvQuest = 2
             NameQuest = "NutsIslandQuest"
-            QuestLv = 2
-            NameMon = "Peanut President"
-            CFrameQ = CFrame.new(-2104.17163, 38.1299706, -10194.418, 0.758814394, -1.38604395e-09, 0.651306927, 2.85280208e-08, 1, -3.1108879e-08, -0.651306927, 4.21863646e-08, 0.758814394)
-            CFrameMon = CFrame.new(-1876.95959, 192.610947, -10542.2939, 0.0553516336, -2.83836812e-08, 0.998466909, -6.89634405e-10, 1, 2.84654931e-08, -0.998466909, -2.26418861e-09, 0.0553516336)
-            SelectMonster = "Peanut Scout"
-            
-            if SelectMonster == "Peanut President" then
-            else
-                Next_Level_X = 2125
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2125 and game.Players.LocalPlayer.Data.Level.Value <= 2149 or SelectMonster == "Ice Cream Chef" then
-            Ms = "Ice Cream Chef"
+            NameMonster = "Peanut President"
+            CFrameQuest = CFrame.new(-2104.3908691406, 38.104167938232, -10194.21875, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMonster = CFrame.new(-1859.35400390625, 38.10316848754883, -10422.4296875)
+        elseif Lv == 2125 or Lv <= 2149 then
+            Monster = "Ice Cream Chef"
+            LvQuest = 1
             NameQuest = "IceCreamIslandQuest"
-            QuestLv = 1
-            NameMon = "Ice Cream Chef"
-            CFrameQ = CFrame.new(-820.404358, 65.8453293, -10965.5654, 0.822534859, 5.24448502e-08, -0.568714678, -2.08336317e-08, 1, 6.20846663e-08, 0.568714678, -3.92184099e-08, 0.822534859)
-            CFrameMon = CFrame.new(-821.614075, 208.39537, -10990.7617, -0.870096624, 3.18909272e-08, 0.492881238, -1.8357893e-08, 1, -9.71107568e-08, -0.492881238, -9.35439957e-08, -0.870096624)
-            
-            if SelectMonster == "Ice Cream Chef" then
-            else
-                Next_Level_X = 2150
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2150 and game.Players.LocalPlayer.Data.Level.Value <= 2199 or SelectMonster == "Ice Cream Commander" then 
-            Ms = "Ice Cream Commander"
+            NameMonster = "Ice Cream Chef"
+            CFrameQuest = CFrame.new(-820.64825439453, 65.819526672363, -10965.795898438, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMonster = CFrame.new(-872.24658203125, 65.81957244873047, -10919.95703125)
+        elseif Lv == 2150 or Lv <= 2199 then
+            Monster = "Ice Cream Commander"
+            LvQuest = 2
             NameQuest = "IceCreamIslandQuest"
-            QuestLv = 2
-            NameMon = "Ice Cream Commander"
-            CFrameQ = CFrame.new(-819.376526, 67.4634171, -10967.2832)
-            CFrameMon = CFrame.new(-610.11669921875, 208.26904296875, -11253.686523438)
-            
-            if SelectMonster == "Ice Cream Commander" then
-            else
-                Next_Level_X = 2200
-            end
-            if game.Players.LocalPlayer.Data.Level.Value >= 2175 then
-                SelectBoss_P = "Cake Queen"
-            end
-            SelectMonster = "Ice Cream Chef"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2200 and game.Players.LocalPlayer.Data.Level.Value <= 2224 or SelectMonster == "Cookie Crafter" then 
-            Ms = "Cookie Crafter"
+            NameMonster = "Ice Cream Commander"
+            CFrameQuest = CFrame.new(-820.64825439453, 65.819526672363, -10965.795898438, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+            CFrameMonster = CFrame.new(-558.06103515625, 112.04895782470703, -11290.7744140625)
+        elseif Lv == 2200 or Lv <= 2224 then
+            Monster = "Cookie Crafter"
+            LvQuest = 1
             NameQuest = "CakeQuest1"
-            QuestLv = 1
-            NameMon = "Cookie Crafter"
-            CFrameQ = CFrame.new(-2020.6068115234375, 37.82400894165039, -12027.80859375)
-            CFrameMon = CFrame.new(-2286.684326171875, 146.5656280517578, -12226.8818359375)
-            
-            if SelectMonster == "Cookie Crafter" then
-            elseif not LevelMax then
-                Next_Level_X = 2225
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2225 and game.Players.LocalPlayer.Data.Level.Value <= 2249 or SelectMonster == "Cake Guard" then 
-            Ms = "Cake Guard"
+            NameMonster = "Cookie Crafter"
+            CFrameQuest = CFrame.new(-2021.32007, 37.7982254, -12028.7295, 0.957576931, -8.80302053e-08, 0.288177818, 6.9301187e-08, 1, 7.51931211e-08, -0.288177818, -5.2032135e-08, 0.957576931)
+            CFrameMonster = CFrame.new(-2374.13671875, 37.79826354980469, -12125.30859375)
+        elseif Lv == 2225 or Lv <= 2249 then
+            Monster = "Cake Guard"
+            LvQuest = 2
             NameQuest = "CakeQuest1"
-            QuestLv = 2
-            NameMon = "Cake Guard"
-            CFrameQ = CFrame.new(-2020.6068115234375, 37.82400894165039, -12027.80859375)
-            CFrameMon = CFrame.new(-1817.9747314453125, 209.5632781982422, -12288.9228515625)
-            SelectMonster = "Cookie Crafter"
-            
-            if SelectMonster == "Cake Guard" then
-            elseif not LevelMax then
-                Next_Level_X = 2250
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2250 and game.Players.LocalPlayer.Data.Level.Value < 2300 or SelectMonster == "Baking Staff" then 
-            Ms = "Baking Staff"
+            NameMonster = "Cake Guard"
+            CFrameQuest = CFrame.new(-2021.32007, 37.7982254, -12028.7295, 0.957576931, -8.80302053e-08, 0.288177818, 6.9301187e-08, 1, 7.51931211e-08, -0.288177818, -5.2032135e-08, 0.957576931)
+            CFrameMonster = CFrame.new(-1598.3070068359375, 43.773197174072266, -12244.5810546875)
+        elseif Lv == 2250 or Lv <= 2274 then
+            Monster = "Baking Staff"
+            LvQuest = 1
             NameQuest = "CakeQuest2"
-            QuestLv = 1
-            NameMon = "Baking Staff"
-            CFrameQ = CFrame.new(-1928.31763, 37.7296638, -12840.626)
-            CFrameMon = CFrame.new(-1818.347900390625, 93.41275787353516, -12887.66015625)
-            
-            if SelectMonster == "Baking Staff" then
-            elseif not LevelMax then
-                Next_Level_X = 2300
-            end
-            
-            SelectMonster = "Cookie Crafter"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2300 and game.Players.LocalPlayer.Data.Level.Value < 2325 or SelectMonster == "Cocoa Warrior" then 
-            Ms = "Cocoa Warrior"
-            NameQuest = "ChocQuest1"
-            QuestLv = 1
-            NameMon = "Cocoa Warrior"
-            CFrameQ = CFrame.new(230.19186401367188, 24.7342586517334, -12202.6572265625)
-            CFrameMon = CFrame.new(24.617475509643555, 24.734342575073242, -12227.267578125)
-            if SelectMonster == "Cocoa Warrior" then
-            else
-                Next_Level_X = 2325
-            end
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2325 and game.Players.LocalPlayer.Data.Level.Value < 2350 or SelectMonster == "Chocolate Bar Battler" then 
-            Ms = "Chocolate Bar Battler"
-            NameQuest = "ChocQuest1"
-            QuestLv = 2
-            NameMon = "Chocolate Bar Battler"
-            CFrameQ = CFrame.new(230.19186401367188, 24.7342586517334, -12202.6572265625)
-            CFrameMon = CFrame.new(658.2230224609375, 24.7342586517334, -12541.9912109375)
-            if SelectMonster == "Chocolate Bar Battler" then
-            else
-                Next_Level_X = 2350
-            end
-            SelectMonster = "Cocoa Warrior"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2350 and game.Players.LocalPlayer.Data.Level.Value < 2375 or SelectMonster == "Sweet Thief" then 
-            Ms = "Sweet Thief"
-            NameQuest = "ChocQuest2"
-            QuestLv = 1
-            NameMon = "Sweet Thief"
-            CFrameQ = CFrame.new(149.1439208984375, 24.7938289642334, -12775.41015625)
-            CFrameMon = CFrame.new(51.61184310913086, 24.79380989074707, -12574.873046875)
-            if SelectMonster == "Sweet Thief" then
-            else
-                Next_Level_X = 2375
-            end
-            SelectMonster = "Chocolate Bar Battler"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2375 and game.Players.LocalPlayer.Data.Level.Value < 2400 or SelectMonster == "Candy Rebel" then 
-            Ms = "Candy Rebel" 
-            NameQuest = "ChocQuest2"
-            QuestLv = 2
-            NameMon = "Candy Rebel"
-            CFrameQ = CFrame.new(149.1439208984375, 24.7938289642334, -12775.41015625)
-            CFrameMon = CFrame.new(28.345605850219727, 24.79380226135254, -12949.5029296875)
-            if SelectMonster == "Candy Rebel" then
-            else
-                Next_Level_X = 2400
-            end
-            SelectMonster = "Sweet Thief"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2400 and game.Players.LocalPlayer.Data.Level.Value < 2425 or SelectMonster == "Candy Pirate"  then
-            Ms = "Candy Pirate" 
-            NameQuest = "CandyQuest1"
-            QuestLv = 1
-            NameMon = "Candy Pirate"
-            CFrameQ = CFrame.new(-1146.80810546875, 16.107254028320312, -14444.353515625)
-            CFrameMon = CFrame.new(-1333.9425048828125, 16.907636642456055, -14424.8447265625)
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2425 and game.Players.LocalPlayer.Data.Level.Value < 2550 or SelectMonster == "Snow Demon" then
-            Ms = "Snow Demon"
-            NameQuest = "CandyQuest1"
-            QuestLv = 2
-            NameMon = "Snow Demon"
-            CFrameQ = CFrame.new(-1146.80810546875, 16.107254028320312, -14444.353515625)
-            CFrameMon = CFrame.new(-963.0213012695312, 16.1071834564209, -14289.576171875)
-            if SelectMonster == "Candy Pirate" then
-            else
-                Next_Level_X = 2551
-            end
-            SelectMonster = "Candy Pirate"
-        elseif game.Players.LocalPlayer.Data.Level.Value >= 2550 then
-            Ms = "Baking Staff"
+            NameMonster = "Baking Staff"
+            CFrameQuest = CFrame.new(-1927.91602, 37.7981339, -12842.5391, -0.96804446, 4.22142143e-08, 0.250778586, 4.74911062e-08, 1, 1.49904711e-08, -0.250778586, 2.64211941e-08, -0.96804446)
+            CFrameMonster = CFrame.new(-1887.8099365234375, 77.6185073852539, -12998.3505859375)
+        elseif Lv == 2275 or Lv <= 2299 then
+            Monster = "Head Baker"
+            LvQuest = 2
             NameQuest = "CakeQuest2"
-            QuestLv = 1
-            NameMon = "Baking Staff"
-            CFrameQ = CFrame.new(-1928.31763, 37.7296638, -12840.626)
-            CFrameMon = CFrame.new(-1818.347900390625, 93.41275787353516, -12887.66015625)
-            
-            SelectMonster = "Cookie Crafter"
-            local Lp = tostring(string.match(tostring(game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")), "%d+"))
-            if Lp == 'nil' or Lp == nil then
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner",true)
-                Cake_Prince_S:Set(' Cake Prince : Boss Spawn')
-            else
-                Cake_Prince_S:Set(' Cake Prince : '..Lp)
-            end
-        end
-    end
-end
-function GetSkill_C(NameW,Skill)
-    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills:GetChildren()) do
-        if v.Name == NameW then
-            if v:FindFirstChild(Skill) and tostring(v[Skill].Title.TextColor) == 'Institutional white' and v[Skill].Cooldown.AbsoluteSize.X == 0 then
-                return true
-            end
-        end
-    end
-    return false
-end
+            NameMonster = "Head Baker"
+            CFrameQuest = CFrame.new(-1927.91602, 37.7981339, -12842.5391, -0.96804446, 4.22142143e-08, 0.250778586, 4.74911062e-08, 1, 1.49904711e-08, -0.250778586, 2.64211941e-08, -0.96804446)
+            CFrameMonster = CFrame.new(-2216.188232421875, 82.884521484375, -12869.2939453125)
+        elseif Lv == 2300 or Lv <= 2324 then
+            Monster = "Cocoa Warrior"
+            LvQuest = 1
+            NameQuest = "ChocQuest1"
+            NameMonster = "Cocoa Warrior"
+            CFrameQuest = CFrame.new(233.22836303710938, 29.876001358032227, -12201.2333984375)
+            CFrameMonster = CFrame.new(-21.55328369140625, 80.57499694824219, -12352.3876953125)
+        elseif Lv == 2325 or Lv <= 2349 then
+            Monster = "Chocolate Bar Battler"
+            LvQuest = 2
+            NameQuest = "ChocQuest1"
+            NameMonster = "Chocolate Bar Battler"
+            CFrameQuest = CFrame.new(233.22836303710938, 29.876001358032227, -12201.2333984375)
+            CFrameMonster = CFrame.new(582.590576171875, 77.18809509277344, -12463.162109375)
+        elseif Lv == 2350 or Lv <= 2374 then
+            Monster = "Sweet Thief"
+            LvQuest = 1
+            NameQuest = "ChocQuest2"
+            NameMonster = "Sweet Thief"
+            CFrameQuest = CFrame.new(150.5066375732422, 30.693693161010742, -12774.5029296875)
+            CFrameMonster = CFrame.new(165.1884765625, 76.05885314941406, -12600.8369140625)
+        elseif Lv == 2375 or Lv <= 2399 then
+            Monster = "Candy Rebel"
+            LvQuest = 2
+            NameQuest = "ChocQuest2"
+            NameMonster = "Candy Rebel"
+            CFrameQuest = CFrame.new(150.5066375732422, 30.693693161010742, -12774.5029296875)
+            CFrameMonster = CFrame.new(134.86563110351562, 77.2476806640625, -12876.5478515625)
+        elseif Lv == 2400 or Lv <= 2424 then
+            Monster = "Candy Pirate"
+            LvQuest = 1
+            NameQuest = "CandyQuest1"
+            NameMonster = "Candy Pirate"
+            CFrameQuest = CFrame.new(-1150.0400390625, 20.378934860229492, -14446.3349609375)
+            CFrameMonster = CFrame.new(-1310.5003662109375, 26.016523361206055, -14562.404296875)
+        elseif Lv == 2425 or Lv <= 2449 then
+            Monster = "Snow DeMonster"
+            LvQuest = 2
+            NameQuest = "CandyQuest1"
+            NameMonster = "Snow DeMonster"
+            CFrameQuest = CFrame.new(-1150.0400390625, 20.378934860229492, -14446.3349609375)
+            CFrameMonster = CFrame.new(-880.2006225585938, 71.24776458740234, -14538.609375)
+        elseif Lv == 2450 or Lv <= 2474 then
+            Monster = "Isle Outlaw"
+            LvQuest = 1
+            NameQuest = "TikiQuest1"
+            NameMonster = "Isle Outlaw"
+            CFrameQuest = CFrame.new(-16547.748046875, 61.13533401489258, -173.41360473632812)
+            CFrameMonster = CFrame.new(-16442.814453125, 116.13899993896484, -264.4637756347656)
+        elseif Lv == 2475 or Lv <= 2499 then
+            Monster = "Island Boy"
+            LvQuest = 2
+            NameQuest = "TikiQuest1"
+            NameMonster = "Island Boy"
+            CFrameQuest = CFrame.new(-16547.748046875, 61.13533401489258, -173.41360473632812)
+            CFrameMonster = CFrame.new(-16901.26171875, 84.06756591796875, -192.88906860351562)
+        elseif Lv == 2500 or Lv <= 2524 then
+            Monster = "Sun-kissed Warrior"
+            LvQuest = 1
+            NameQuest = "TikiQuest2"
+            NameMonster = "kissed"
+            CFrameQuest = CFrame.new(-16539.078125, 55.68632888793945, 1051.5738525390625)
+            CFrameMonster = CFrame.new(-16051.9697265625, 54.797149658203125, 1084.67578125)
+        elseif Lv == 2525 or Lv <= 2550 then
+            Monster = "Isle Champion"
+            LvQuest = 2
+            NameQuest = "TikiQuest2"
+            NameMonster = "Isle Champion"
+            CFrameQuest = CFrame.new(-16539.078125, 55.68632888793945, 1051.5738525390625)
+            CFrameMonster = CFrame.new(-16619.37109375, 129.9848175048828, 1071.235595703125)
+          end
+      end
+  endfunction CheckLevel2()
+		local Lv = game:GetService("Players").LocalPlayer.Data.Level.Value
+		if Old_World then
+			if game.Players.LocalPlayer.Data.Level.Value == 1 or game.Players.LocalPlayer.Data.Level.Value <= 9 or SelectMonster == "" then -- Bandit
+				Ms = "Bandit"
+				NameQuest = "BanditQuest1"
+				QuestLv = 1
+				NameMon = "Bandit"
+				CFrameQ = CFrame.new(1059.37195, 15.4495068, 1550.4231, 0.939700544, -0, -0.341998369, 0, 1, -0, 0.341998369, 0, 0.939700544)
+				CFrameMon = CFrame.new(1353.44885, 3.40935516, 1376.92029, 0.776053488, -6.97791975e-08, 0.630666852, 6.99138596e-08, 1, 2.4612488e-08, -0.630666852, 2.49917598e-08, 0.776053488)
+				Next_Level_X = 10
+			elseif game.Players.LocalPlayer.Data.Level.Value == 10 or game.Players.LocalPlayer.Data.Level.Value <= 100 then
+				Ms = "Shanda"
+				NameQuest = "SkyExp1Quest"
+				QuestLv = 2
+				NameMon = "Shanda"
+				CFrameQ = CFrame.new(-7859.09814, 5544.19043, -381.476196)
+				CFrameMon = CFrame.new(-7904.57373, 5584.37646, -459.62973)
+	
+				Next_Level_X = 75
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 60 and game.Players.LocalPlayer.Data.Level.Value <= 75-1 or SelectMonster == "Desert Bandit" then
+				Ms = "Desert Bandit"
+				NameQuest = "DesertQuest"
+				QuestLv = 1
+				NameMon = "Desert Bandit"
+				CFrameQ = CFrame.new(894.488647, 5.14000702, 4392.43359, 0.819155693, -0, -0.573571265, 0, 1, -0, 0.573571265, 0, 0.819155693)
+				CFrameMon = CFrame.new(932.788818, 6.8503746, 4488.24609, -0.998625934, 3.08948351e-08, 0.0524050146, 2.79967303e-08, 1, -5.60361286e-08, -0.0524050146, -5.44919629e-08, -0.998625934)
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 75 and game.Players.LocalPlayer.Data.Level.Value <= 90-1 or SelectMonster == "Desert Officer" then
+				Ms = "Desert Officer"
+				NameQuest = "DesertQuest"
+				QuestLv = 2
+				NameMon = "Desert Officer"
+				CFrameQ = CFrame.new(894.488647, 5.14000702, 4392.43359, 0.819155693, -0, -0.573571265, 0, 1, -0, 0.573571265, 0, 0.819155693)
+				CFrameMon = CFrame.new(1617.07886, 1.5542295, 4295.54932, -0.997540116, -2.26287735e-08, -0.070099175, -1.69377223e-08, 1, -8.17798806e-08, 0.070099175, -8.03913949e-08, -0.997540116)
+				
+				SelectMonster = "Desert Bandit"
+				Next_Level_X = 90
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 90 and game.Players.LocalPlayer.Data.Level.Value <= 100-1 or SelectMonster == "Snow Bandit" then -- Snow Bandits
+				Ms = "Snow Bandit"
+				NameQuest = "SnowQuest"
+				QuestLv = 1
+				NameMon = "Snow Bandit"
+				CFrameQ = CFrame.new(1389.74451, 86.6520844, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
+				CFrameMon = CFrame.new(1412.92346, 55.3503647, -1260.62036, -0.246266365, -0.0169920288, -0.969053388, 0.000432241941, 0.999844253, -0.0176417865, 0.969202161, -0.00476344163, -0.246220857)
+				
+				if SelectMonster == "Snow Bandit" then
+				else
+					Next_Level_X = 100
+				end
+				if game.Players.LocalPlayer.Data.Level.Value >= 110 then
+					SelectBoss_P = "Yeti" 
+				end
+				
+			elseif game.Players.LocalPlayer.Data.Level.Value == 100 or game.Players.LocalPlayer.Data.Level.Value <= 119 or SelectMonster == "Snowman" then -- Snowman
+				Next_Level_X = 120
+				Ms = "Snowman"
+				NameQuest = "SnowQuest"
+				QuestLv = 2
+				NameMon = "Snowman"
+				CFrameQ = CFrame.new(1389.74451, 86.6520844, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
+				CFrameMon = CFrame.new(1376.86401, 97.2779999, -1396.93115, -0.986755967, 7.71178321e-08, -0.162211925, 7.71531674e-08, 1, 6.08143536e-09, 0.162211925, -6.51427134e-09, -0.986755967)
+				
+				
+				if game.Players.LocalPlayer.Data.Level.Value >= 110 then
+					SelectBoss_P = "Yeti" 
+				end
+				SelectMonster = "Snow Bandit"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 120 or game.Players.LocalPlayer.Data.Level.Value <= 174 or SelectMonster == "Chief Petty Officer" then -- Chief Petty Officer
+				Ms = "Chief Petty Officer"
+				NameQuest = "MarineQuest2"
+				QuestLv = 1
+				NameMon = "Chief Petty Officer"
+				CFrameQ = CFrame.new(-5039.58643, 27.3500385, 4324.68018, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+				CFrameMon = CFrame.new(-4882.8623, 22.6520386, 4255.53516, 0.273695946, -5.40380647e-08, -0.96181643, 4.37720793e-08, 1, -4.37274998e-08, 0.96181643, -3.01326679e-08, 0.273695946)
+				
+				
+				if game.Players.LocalPlayer.Data.Level.Value >= 130 then
+					SelectBoss_P = "Vice Admiral"
+				end
+				if SelectMonster == "Chief Petty Officer" then
+				else
+					Next_Level_X = 175
+				end
+			elseif SelectMonster == "Sky Bandit" then -- Sky Bandit
+				Ms = "Sky Bandit"
+				NameQuest = "SkyQuest"
+				QuestLv = 1
+				NameMon = "Sky Bandit"
+				CFrameQ = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+				CFrameMon = CFrame.new(-4959.51367, 365.39267, -2974.56812, 0.964867651, 7.74418396e-08, 0.262737453, -6.95931988e-08, 1, -3.91783708e-08, -0.262737453, 1.95171506e-08, 0.964867651)
+				
+				
+			elseif game.Players.LocalPlayer.Data.Level.Value == 175 or game.Players.LocalPlayer.Data.Level.Value <= 190-1 or SelectMonster == "Dark Master" then -- Dark Master
+				
+				Ms = "Dark Master"
+				NameQuest = "SkyQuest"
+				QuestLv = 2
+				NameMon = "Dark Master"
+				CFrameQ = CFrame.new(-4839.53027, 716.368591, -2619.44165, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+				CFrameMon = CFrame.new(-5079.98096, 376.477356, -2194.17139, 0.465965867, -3.69776352e-08, 0.884802461, 3.40249851e-09, 1, 4.00000886e-08, -0.884802461, -1.56281423e-08, 0.465965867)
+				
+				SelectMonster = "Sky Bandit"
+				if SelectMonster == "Dark Master" then
+				else
+					Next_Level_X = 190
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 190 or game.Players.LocalPlayer.Data.Level.Value <= 209 or SelectMonster == "Prisoner" then
+				
+				Ms = "Prisoner"
+				QuestLv = 1
+				NameQuest = "PrisonerQuest"
+				NameMon = "Prisoner"
+				CFrameQ = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+				CFrameMon = CFrame.new(5433.39307, 88.678093, 514.986877, 0.879988372, 0, -0.474995494, 0, 1, 0, 0.474995494, 0, 0.879988372)
+				if game.Players.LocalPlayer.Data.Level.Value >= 220 then
+					SelectBoss_P = "Warden" 
+				end
+				if game.Players.LocalPlayer.Data.Level.Value >= 232 then
+					SelectBoss_P = "Chief Warden"
+				end
+				if game.Players.LocalPlayer.Data.Level.Value >= 242 then
+					SelectBoss_P = "Thunder God"
+				end
+				if SelectMonster == "Prisoner" then
+				else
+					Next_Level_X = 210
+				end
+				Bypass_TP_Dis = true
+			elseif game.Players.LocalPlayer.Data.Level.Value == 210 or game.Players.LocalPlayer.Data.Level.Value <= 249 or SelectMonster == "Dangerous Prisoner" then
+				if game.Players.LocalPlayer.Data.Level.Value >= 220 then
+					SelectBoss_P = "Warden" 
+				end
+				if game.Players.LocalPlayer.Data.Level.Value >= 232 then
+					SelectBoss_P = "Chief Warden"
+				end
+				if game.Players.LocalPlayer.Data.Level.Value >= 242 then
+					SelectBoss_P = "Thunder God"
+				end
+				Ms = "Dangerous Prisoner"
+				QuestLv = 2
+				NameQuest = "PrisonerQuest"
+				NameMon = "Dangerous Prisoner"
+				CFrameQ = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
+				CFrameMon = CFrame.new(5433.39307, 88.678093, 514.986877, 0.879988372, 0, -0.474995494, 0, 1, 0, 0.474995494, 0, 0.879988372)
+				SelectMonster = "Prisoner"
+				Next_Level_X = 250
+				Bypass_TP_Dis = true
+			elseif game.Players.LocalPlayer.Data.Level.Value == 250 or game.Players.LocalPlayer.Data.Level.Value <= 274 or SelectMonster == "Toga Warrior" then -- Toga Warrior
+				
+				Ms = "Toga Warrior"
+				NameQuest = "ColosseumQuest"
+				QuestLv = 1
+				NameMon = "Toga Warrior"
+				CFrameQ = CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
+				CFrameMon = CFrame.new(-1779.97583, 44.6077499, -2736.35474, 0.984437346, 4.10396339e-08, 0.175734788, -3.62286876e-08, 1, -3.05844168e-08, -0.175734788, 2.3741821e-08, 0.984437346)
+				
+				if SelectMonster == "Toga Warrior" then
+				else
+					Next_Level_X = 275
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 275 or game.Players.LocalPlayer.Data.Level.Value <= 299 or SelectMonster == "Gladiator" then -- Gladiato
+				
+				Ms = "Gladiator"
+				NameQuest = "ColosseumQuest"
+				QuestLv = 2
+				NameMon = "Gladiator"
+				CFrameQ = CFrame.new(-1576.11743, 7.38933945, -2983.30762, 0.576966345, 1.22114863e-09, 0.816767931, -3.58496594e-10, 1, -1.24185606e-09, -0.816767931, 4.2370063e-10, 0.576966345)
+				CFrameMon = CFrame.new(-1274.75903, 58.1895943, -3188.16309, 0.464524001, 6.21005611e-08, 0.885560572, -4.80449414e-09, 1, -6.76054768e-08, -0.885560572, 2.71497012e-08, 0.464524001)
+				
+				SelectMonster = "Toga Warrior"
+				Next_Level_X = 300
+			elseif game.Players.LocalPlayer.Data.Level.Value == 300 or game.Players.LocalPlayer.Data.Level.Value <= 324 or SelectMonster == "Military Soldier" then -- Military Soldier
+				if game.Players.LocalPlayer.Data.Level.Value >= 350 then
+					SelectBoss_P = "Magma Admiral"
+				end
+				Ms = "Military Soldier"
+				NameQuest = "MagmaQuest"
+				QuestLv = 1
+				NameMon = "Military Soldier"
+				CFrameQ = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
+				CFrameMon = CFrame.new(-5363.01123, 41.5056877, 8548.47266, -0.578253984, -3.29503091e-10, 0.815856814, 9.11209668e-08, 1, 6.498761e-08, -0.815856814, 1.11920997e-07, -0.578253984)
+				
+				if SelectMonster == "Military Soldier" then
+				else
+					Next_Level_X = 325
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 325 or game.Players.LocalPlayer.Data.Level.Value <= 374 or SelectMonster == "Military Spy" then -- Military Spy
+				if game.Players.LocalPlayer.Data.Level.Value >= 350 then
+					SelectBoss_P = "Magma Admiral"
+				end
+				Ms = "Military Spy"
+				NameQuest = "MagmaQuest"
+				QuestLv = 2
+				NameMon = "Military Spy"
+				CFrameQ = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
+				CFrameMon = CFrame.new(-5787.99023, 120.864456, 8762.25293, -0.188358366, -1.84706277e-08, 0.982100308, -1.23782129e-07, 1, -4.93306951e-09, -0.982100308, -1.22495649e-07, -0.188358366)
+				
+				
+				SelectMonster = "Military Soldier"
+				Next_Level_X = 375
+			elseif game.Players.LocalPlayer.Data.Level.Value == 375 or game.Players.LocalPlayer.Data.Level.Value <= 399 or SelectMonster == "Fishman Warrior" then -- Fishman Warrior
+				if game.Players.LocalPlayer.Data.Level.Value >= 425 then
+					SelectBoss_P = "Fishman Lord"
+				end
+				Ms = "Fishman Warrior"
+				NameQuest = "FishmanQuest"
+				QuestLv = 1
+				NameMon = "Fishman Warrior"
+				CFrameQ = CFrame.new(61122.5625, 18.4716396, 1568.16504)
+				CFrameMon = CFrame.new(60946.6094, 48.6735229, 1525.91687, -0.0817126185, 8.90751153e-08, 0.996655822, 2.00889794e-08, 1, -8.77269599e-08, -0.996655822, 1.28533992e-08, -0.0817126185)
+				if SelectMonster == "Fishman Warrior" then
+				else
+					Next_Level_X = 400
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 400 or game.Players.LocalPlayer.Data.Level.Value <= 449 or SelectMonster == "Fishman Commando" then -- Fishman Commando
+				if game.Players.LocalPlayer.Data.Level.Value >= 425 then
+					SelectBoss_P = "Fishman Lord"
+				end
+				Ms = "Fishman Commando"
+				NameQuest = "FishmanQuest"
+				QuestLv = 2
+				NameMon = "Fishman Commando"
+				CFrameQ = CFrame.new(61122.5625, 18.4716396, 1568.16504)
+				CFrameMon = CFrame.new(61902.7383, 18.4828358, 1478.33936, -0.803795099, 0, -0.594906271, 0, 1, 0, 0.594906271, 0, -0.803795099)
+				if SelectMonster == "Fishman Commando" then
+				else
+					Next_Level_X = 450
+				end
+				SelectMonster = "Fishman Warrior"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 450 or game.Players.LocalPlayer.Data.Level.Value <= 474 or SelectMonster == "God's Guard" then 
+				Ms = "God's Guard"
+				NameQuest = "SkyExp1Quest"
+				QuestLv = 1
+				NameMon = "God's Guards"
+				CFrameQ = CFrame.new(-4721.71436, 845.277161, -1954.20105)
+				CFrameMon = CFrame.new(-4716.95703, 853.089722, -1933.925427)
+				if SelectMonster == "God's Guard" then
+				else
+					Next_Level_X = 475
+				end
+				SelectMonster = "Fishman Commando"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 475 or game.Players.LocalPlayer.Data.Level.Value <= 524 or SelectMonster == "Shanda" then
+				Ms = "Shanda"
+				NameQuest = "SkyExp1Quest"
+				QuestLv = 2
+				NameMon = "Shandas"
+				CFrameQ = CFrame.new(-7859.09814, 5544.19043, -381.476196)
+				CFrameMon = CFrame.new(-7904.57373, 5584.37646, -459.62973)
+				if game.Players.LocalPlayer.Data.Level.Value >= 500 then
+					SelectBoss_P = "Wysper"
+				end
+				if SelectMonster == "Shanda" then
+				else
+					Next_Level_X = 525
+				end
+				SelectMonster = "God's Guard"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 525 or game.Players.LocalPlayer.Data.Level.Value <= 549 or SelectMonster == "Royal Squad" then -- Royal Squad
+				
+				Ms = "Royal Squad"
+				NameQuest = "SkyExp2Quest"
+				QuestLv = 1
+				NameMon = "Royal Squad"
+				CFrameQ = CFrame.new(-7906.81592, 5634.6626, -1411.99194, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+				CFrameMon = CFrame.new(-7555.04199, 5606.90479, -1303.24744, -0.896107852, -9.6057462e-10, -0.443836004, -4.24974544e-09, 1, 6.41599973e-09, 0.443836004, 7.63560326e-09, -0.896107852)
+				
+				
+				if SelectMonster == "Royal Squad" then
+				else
+					Next_Level_X = 550
+				end
+				SelectMonster = "Shanda"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 550 or game.Players.LocalPlayer.Data.Level.Value <= 624 or SelectMonster == "Royal Soldier" then -- Royal Soldier
+				if game.Players.LocalPlayer.Data.Level.Value >= 575 then
+					SelectBoss_P = "Thunder God"
+				end
+				Ms = "Royal Soldier"
+				NameQuest = "SkyExp2Quest"
+				QuestLv = 2
+				NameMon = "Royal Soldier"
+				CFrameQ = CFrame.new(-7906.81592, 5634.6626, -1411.99194, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+				CFrameMon = CFrame.new(-7837.31152, 5649.65186, -1791.08582, -0.716008604, 0.0104285581, -0.698013008, 5.02521061e-06, 0.99988848, 0.0149335321, 0.69809103, 0.0106890313, -0.715928733)
+				
+				
+				if SelectMonster == "Royal Soldier" then
+				else
+					Next_Level_X = 625
+				end
+				SelectMonster = "Royal Squad"
+				
+			elseif game.Players.LocalPlayer.Data.Level.Value == 625 or game.Players.LocalPlayer.Data.Level.Value <= 649 or SelectMonster == "Galley Pirate" then -- Galley Pirate
+				
+				Ms = "Galley Pirate"
+				NameQuest = "FountainQuest"
+				QuestLv = 1
+				NameMon = "Galley Pirate"
+				CFrameQ = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
+				CFrameMon = CFrame.new(5569.80518, 38.5269432, 3849.01196, 0.896460414, 3.98027495e-08, 0.443124533, -1.34262139e-08, 1, -6.26611296e-08, -0.443124533, 5.02237434e-08, 0.896460414)
+				
+				if SelectMonster == "Galley Pirate" then
+				else
+					Next_Level_X = 650
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 650 or SelectMonster == "Galley Captain" then -- Galley Captain
+				if game.Players.LocalPlayer.Data.Level.Value >= 675 then
+					SelectBoss_P = "Cyborg"
+				end
+				Ms = "Galley Captain"
+				NameQuest = "FountainQuest"
+				QuestLv = 2
+				NameMon = "Galley Captain"
+				CFrameQ = CFrame.new(5259.81982, 37.3500175, 4050.0293, 0.087131381, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, 0.087131381)
+				CFrameMon = CFrame.new(5782.90186, 94.5326462, 4716.78174, 0.361808896, -1.24757526e-06, -0.932252586, 2.16989656e-06, 1, -4.96097414e-07, 0.932252586, -1.84339774e-06, 0.361808896)
+				
+				
+				
+				SelectMonster = "Galley Pirate"
+				Next_Level_X = 9999
+			end
+		end
+		if New_World then
+			if game.Players.LocalPlayer.Data.Level.Value == 700 or game.Players.LocalPlayer.Data.Level.Value <= 724 or SelectMonster == "Raider" then -- Raider
+				Ms = "Raider" 
+				NameQuest = "Area1Quest"
+				QuestLv = 1
+				NameMon = "Raider"
+				CFrameQ = CFrame.new(-429.543518, 71.7699966, 1836.18188, -0.22495985, 0, -0.974368095, 0, 1, 0, 0.974368095, 0, -0.22495985)
+				CFrameMon = CFrame.new(-737.026123, 10.1748352, 2392.57959, 0.272128761, 0, -0.962260842, -0, 1, -0, 0.962260842, 0, 0.272128761)
+				
+				if SelectMonster == "Raider" then
+				else
+					Next_Level_X = 725
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 725 or game.Players.LocalPlayer.Data.Level.Value <= 774 or SelectMonster == "Mercenary" then -- Mercenary
+				if game.Players.LocalPlayer.Data.Level.Value >= 750 then
+					SelectBoss_P = "Diamond"
+				end
+				Ms = "Mercenary"
+				NameQuest = "Area1Quest"
+				QuestLv = 2
+				NameMon = "Mercenary"
+				CFrameQ = CFrame.new(-429.543518, 71.7699966, 1836.18188, -0.22495985, 0, -0.974368095, 0, 1, 0, 0.974368095, 0, -0.22495985)
+				CFrameMon = CFrame.new(-1022.21271, 72.9855194, 1891.39148, -0.990782857, 0, -0.135460541, 0, 1, 0, 0.135460541, 0, -0.990782857)
+				
+				if SelectMonster == "Mercenary" then
+				else
+					Next_Level_X = 775
+				end
+				SelectMonster = "Raider"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 775 or game.Players.LocalPlayer.Data.Level.Value <= 799 or SelectMonster == "Swan Pirate" then -- Swan Pirate
+				Ms = "Swan Pirate"
+				NameQuest = "Area2Quest"
+				QuestLv = 1
+				NameMon = "Swan Pirate"
+				CFrameQ = CFrame.new(638.43811, 71.769989, 918.282898, 0.139203906, 0, 0.99026376, 0, 1, 0, -0.99026376, 0, 0.139203906)
+				CFrameMon = CFrame.new(976.467651, 111.174057, 1229.1084, 0.00852567982, -4.73897828e-08, -0.999963999, 1.12251888e-08, 1, -4.7295778e-08, 0.999963999, -1.08215579e-08, 0.00852567982)
+				
+				if SelectMonster == "Swan Pirate" then
+				else
+					Next_Level_X = 800
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 800 or game.Players.LocalPlayer.Data.Level.Value <= 874 or SelectMonster == "Factory Staff" then -- Factory Staff
+				Ms = "Factory Staff"
+				NameQuest = "Area2Quest"
+				QuestLv = 2
+				NameMon = "Factory Staff"
+				CFrameQ = CFrame.new(638.43811, 71.769989, 918.282898, 0.139203906, 0, 0.99026376, 0, 1, 0, -0.99026376, 0, 0.139203906)
+				CFrameMon = CFrame.new(336.74585, 73.1620483, -224.129272, 0.993632793, 3.40154607e-08, 0.112668738, -3.87658332e-08, 1, 3.99718729e-08, -0.112668738, -4.40850592e-08, 0.993632793)
+				
+				if SelectMonster == "Factory Staff" then
+				else
+					Next_Level_X = 875
+				end
+				if game.Players.LocalPlayer.Data.Level.Value >= 850 then
+					SelectBoss_P = "Jeremy"
+				end
+				SelectMonster = "Swan Pirate"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 875 or game.Players.LocalPlayer.Data.Level.Value <= 899 or SelectMonster == "Marine Lieutenant" then -- Marine Lieutenant
+				Ms = "Marine Lieutenant"
+				NameQuest = "MarineQuest3"
+				QuestLv = 1
+				NameMon = "Marine Lieutenant"
+				CFrameQ = CFrame.new(-2440.79639, 71.7140732, -3216.06812, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+				CFrameMon = CFrame.new(-2842.69922, 72.9919434, -2901.90479, -0.762281299, 0, -0.64724648, 0, 1.00000012, 0, 0.64724648, 0, -0.762281299)
+				
+				if SelectMonster == "Marine Lieutenant" then
+				else
+					Next_Level_X = 900
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 900 or game.Players.LocalPlayer.Data.Level.Value <= 949 or SelectMonster == "Marine Captain" then -- Marine Captain
+				Ms = "Marine Captain"
+				NameQuest = "MarineQuest3"
+				QuestLv = 2
+				NameMon = "Marine Captain"
+				CFrameQ = CFrame.new(-2440.79639, 71.7140732, -3216.06812, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
+				CFrameMon = CFrame.new(-1814.70313, 72.9919434, -3208.86621, -0.900422215, 7.93464423e-08, -0.435017526, 3.68856199e-08, 1, 1.06050372e-07, 0.435017526, 7.94441988e-08, -0.900422215)
+				if game.Players.LocalPlayer.Data.Level.Value >= 925 then
+					SelectBoss_P = "Fajita"
+				end
+				if SelectMonster == "Marine Captain" then
+				else
+					Next_Level_X = 950
+				end
+				SelectMonster = "Marine Lieutenant"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 950 or game.Players.LocalPlayer.Data.Level.Value <= 974 or SelectMonster == "Zombie" then -- Zombie
+				Ms = "Zombie"
+				NameQuest = "ZombieQuest"
+				QuestLv = 1
+				NameMon = "Zombie"
+				CFrameQ = CFrame.new(-5497.06152, 47.5923004, -795.237061, -0.29242146, 0, -0.95628953, 0, 1, 0, 0.95628953, 0, -0.29242146)
+				CFrameMon = CFrame.new(-5649.23438, 126.0578, -737.773743, 0.355238914, -8.10359282e-08, 0.934775114, 1.65461245e-08, 1, 8.04023372e-08, -0.934775114, -1.3095117e-08, 0.355238914)
+				
+				if SelectMonster == "Zombie" then
+				else
+					Next_Level_X = 975
+				end
+				Bypass_TP_Dis = true
+			elseif game.Players.LocalPlayer.Data.Level.Value == 975 or game.Players.LocalPlayer.Data.Level.Value <= 999 or SelectMonster == "Vampire" then -- Vampire
+				Ms = "Vampire"
+				NameQuest = "ZombieQuest"
+				QuestLv = 2
+				NameMon = "Vampire"
+				CFrameQ = CFrame.new(-5497.06152, 47.5923004, -795.237061, -0.29242146, 0, -0.95628953, 0, 1, 0, 0.95628953, 0, -0.29242146)
+				CFrameMon = CFrame.new(-6030.32031, 0.4377408, -1313.5564, -0.856965423, 3.9138893e-08, -0.515373945, -1.12178942e-08, 1, 9.45958547e-08, 0.515373945, 8.68467822e-08, -0.856965423)
+				
+				if SelectMonster == "Vampire" then
+				else
+					Next_Level_X = 1000
+				end
+				Bypass_TP_Dis = true
+				SelectMonster = "Zombie"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1000 or game.Players.LocalPlayer.Data.Level.Value <= 1049 or SelectMonster == "Snow Trooper" then -- Snow Trooper **
+				Ms = "Snow Trooper"
+				NameQuest = "SnowMountainQuest"
+				QuestLv = 1
+				NameMon = "Snow Trooper"
+				CFrameQ = CFrame.new(609.858826, 400.119904, -5372.25928, -0.374604106, 0, 0.92718488, 0, 1, 0, -0.92718488, 0, -0.374604106)
+				CFrameMon = CFrame.new(621.003418, 391.361053, -5335.43604, 0.481644779, 0, 0.876366913, 0, 1, 0, -0.876366913, 0, 0.481644779)
+				
+				if SelectMonster == "Snow Trooper" then
+				else
+					Next_Level_X = 1050
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1050 or game.Players.LocalPlayer.Data.Level.Value <= 1099 or SelectMonster == "Winter Warrior" then -- Winter Warrior
+				Ms = "Winter Warrior"
+				NameQuest = "SnowMountainQuest"
+				QuestLv = 2
+				NameMon = "Winter Warrior"
+				CFrameQ = CFrame.new(609.858826, 400.119904, -5372.25928, -0.374604106, 0, 0.92718488, 0, 1, 0, -0.92718488, 0, -0.374604106)
+				CFrameMon = CFrame.new(1295.62683, 429.447784, -5087.04492, -0.698032081, -8.28980049e-08, -0.71606636, -1.98835952e-08, 1, -9.63858184e-08, 0.71606636, -5.30424877e-08, -0.698032081)
+				
+				if SelectMonster == "Winter Warrior" then
+				else
+					Next_Level_X = 1100
+				end
+				SelectMonster = "Snow Trooper"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1100 or game.Players.LocalPlayer.Data.Level.Value <= 1124 or SelectMonster == "Lab Subordinate" then -- Lab Subordinate
+				Ms = "Lab Subordinate"
+				NameQuest = "IceSideQuest"
+				QuestLv = 1
+				NameMon = "Lab Subordinate"
+				CFrameQ = CFrame.new(-6064.06885, 15.2422857, -4902.97852, 0.453972578, -0, -0.891015649, 0, 1, -0, 0.891015649, 0, 0.453972578)
+				CFrameMon = CFrame.new(-5769.2041, 37.9288292, -4468.38721, -0.569419742, -2.49055017e-08, 0.822046936, -6.96206541e-08, 1, -1.79282633e-08, -0.822046936, -6.74401548e-08, -0.569419742)
+				
+				if SelectMonster == "Lab Subordinate" then
+				else
+					Next_Level_X = 1125
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1125 or game.Players.LocalPlayer.Data.Level.Value <= 1174 or SelectMonster == "Horned Warrior" then -- Horned Warrior
+				if game.Players.LocalPlayer.Data.Level.Value >= 1150 then
+					SelectBoss_P = "Smoke Admiral"
+				end
+				Ms = "Horned Warrior"
+				NameQuest = "IceSideQuest"
+				QuestLv = 2
+				NameMon = "Horned Warrior"
+				CFrameQ = CFrame.new(-6064.06885, 15.2422857, -4902.97852, 0.453972578, -0, -0.891015649, 0, 1, -0, 0.891015649, 0, 0.453972578)
+				CFrameMon = CFrame.new(-6401.27979, 15.9775667, -5948.24316, 0.388303697, 0, -0.921531856, 0, 1, 0, 0.921531856, 0, 0.388303697)
+				
+				if SelectMonster == "Horned Warrior" then
+				else
+					Next_Level_X = 1175
+				end
+	
+				SelectMonster = "Lab Subordinate"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1175 or game.Players.LocalPlayer.Data.Level.Value <= 1199 or SelectMonster == "Magma Ninja" then -- Magma Ninja
+				Ms = "Magma Ninja"
+				NameQuest = "FireSideQuest"
+				QuestLv = 1
+				NameMon = "Magma Ninja"
+				CFrameQ = CFrame.new(-5428.03174, 15.0622921, -5299.43457, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
+				CFrameMon = CFrame.new(-5466.06445, 57.6952019, -5837.42822, -0.988835871, 0, -0.149006829, 0, 1, 0, 0.149006829, 0, -0.988835871)
+				
+				if SelectMonster == "Magma Ninja" then
+				else
+					Next_Level_X = 1200
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1200 or game.Players.LocalPlayer.Data.Level.Value <= 1249 or SelectMonster == "Lava Pirate" then 
+				Ms = "Lava Pirate"
+				NameQuest = "FireSideQuest"
+				QuestLv = 2
+				NameMon = "Lava Pirate"
+				CFrameQ = CFrame.new(-5431.09473, 15.9868021, -5296.53223, 0.831796765, 1.15322464e-07, -0.555080295, -1.10814341e-07, 1, 4.17010995e-08, 0.555080295, 2.68240168e-08, 0.831796765)
+				CFrameMon = CFrame.new(-5169.71729, 34.1234779, -4669.73633, -0.196780294, 0, 0.98044765, 0, 1.00000012, -0, -0.98044765, 0, -0.196780294)
+				
+				if SelectMonster == "Lava Pirate" then
+				else
+					Next_Level_X = 1250
+				end
+				SelectMonster = "Magma Ninja"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1250 or game.Players.LocalPlayer.Data.Level.Value <= 1274 or SelectMonster == "Ship Deckhand" then 
+				Ms = "Ship Deckhand"
+				NameQuest = "ShipQuest1"
+				QuestLv = 1
+				NameMon = "Ship Deckhand"
+				CFrameQ = CFrame.new(1037.80127, 125.092171, 32911.6016, -0.244533166, -0, -0.969640911, -0, 1.00000012, -0, 0.96964103, 0, -0.244533136)
+				CFrameMon = CFrame.new(1163.80872, 138.288452, 33058.4258, -0.998580813, 5.49076979e-08, -0.0532564968, 5.57436763e-08, 1, -1.42118655e-08, 0.0532564968, -1.71604082e-08, -0.998580813)
+				if SelectMonster == "Ship Deckhand" then
+				else
+					Next_Level_X = 1275
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1275 or game.Players.LocalPlayer.Data.Level.Value <= 1299 or SelectMonster == "Ship Engineer" then 
+				Ms = "Ship Engineer"
+				NameQuest = "ShipQuest1"
+				QuestLv = 2
+				NameMon = "Ship Engineer"
+				CFrameQ = CFrame.new(1037.80127, 125.092171, 32911.6016, -0.244533166, -0, -0.969640911, -0, 1.00000012, -0, 0.96964103, 0, -0.244533136)
+				CFrameMon = CFrame.new(921.30249023438, 125.400390625, 32937.34375)
+				if SelectMonster == "Ship Engineer" then
+				else
+					Next_Level_X = 1300
+				end
+				SelectMonster = "Ship Deckhand"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1300 or game.Players.LocalPlayer.Data.Level.Value <= 1324 or SelectMonster == "Ship Steward" then 
+				Ms = "Ship Steward"
+				NameQuest = "ShipQuest2"
+				QuestLv = 1
+				NameMon = "Ship Steward"
+				CFrameQ = CFrame.new(968.80957, 125.092171, 33244.125, -0.869560242, 1.51905191e-08, -0.493826836, 1.44108379e-08, 1, 5.38534195e-09, 0.493826836, -2.43357912e-09, -0.869560242)
+				CFrameMon = CFrame.new(917.96057128906, 136.89932250977, 33343.4140625)
+				if SelectMonster == "Ship Steward" then
+				else
+					Next_Level_X = 1325
+				end
+				SelectMonster = "Ship Deckhand"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1325 or game.Players.LocalPlayer.Data.Level.Value <= 1349 or SelectMonster == "Ship Officer" then 
+				Ms = "Ship Officer"
+				NameQuest = "ShipQuest2"
+				QuestLv = 2
+				NameMon = "Ship Officer"
+				CFrameQ = CFrame.new(968.80957, 125.092171, 33244.125, -0.869560242, 1.51905191e-08, -0.493826836, 1.44108379e-08, 1, 5.38534195e-09, 0.493826836, -2.43357912e-09, -0.869560242)
+				CFrameMon = CFrame.new(944.44964599609, 181.40081787109, 33278.9453125)
+				if SelectMonster == "Ship Officer" then
+				else
+					Next_Level_X = 1350
+				end
+				SelectMonster = "Ship Steward"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1350 or game.Players.LocalPlayer.Data.Level.Value <= 1374 or SelectMonster == "Arctic Warrior" then 
+				Ms = "Arctic Warrior"
+				NameQuest = "FrostQuest"
+				QuestLv = 1
+				NameMon = "Arctic Warrior"
+				CFrameQ = CFrame.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909)
+				CFrameMon = CFrame.new(5878.23486, 81.3886948, -6136.35596, -0.451037169, 2.3908234e-07, 0.892505825, -1.08168464e-07, 1, -3.22542007e-07, -0.892505825, -2.4201924e-07, -0.451037169)
+				
+				if SelectMonster == "Arctic Warrior" then
+				else
+					Next_Level_X = 1375
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1375 or game.Players.LocalPlayer.Data.Level.Value <= 1424 or SelectMonster == "Snow Lurker" then -- Snow Lurker
+				if game.Players.LocalPlayer.Data.Level.Value >= 1400 then
+					SelectBoss_P = "Awakened Ice Admiral"
+				end
+				Ms = "Snow Lurker"
+				NameQuest = "FrostQuest"
+				QuestLv = 2
+				NameMon = "Snow Lurker"
+				CFrameQ = CFrame.new(5667.6582, 26.7997818, -6486.08984, -0.933587909, 0, -0.358349502, 0, 1, 0, 0.358349502, 0, -0.933587909)
+				CFrameMon = CFrame.new(5513.36865, 60.546711, -6809.94971, -0.958693981, -1.65617333e-08, 0.284439981, -4.07668654e-09, 1, 4.44854642e-08, -0.284439981, 4.14883701e-08, -0.958693981)
+				
+				if SelectMonster == "Snow Lurker" then
+				else
+					Next_Level_X = 1450
+				end
+			
+				SelectMonster = "Arctic Warrior"
+			elseif game.Players.LocalPlayer.Data.Level.Value == 1425 or game.Players.LocalPlayer.Data.Level.Value <= 1449 or SelectMonster == "Sea Soldier" then -- Sea Soldier
+				Ms = "Sea Soldier"
+				NameQuest = "ForgottenQuest"
+				QuestLv = 1
+				NameMon = "Sea Soldier"
+				CFrameQ = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
+				CFrameMon = CFrame.new(-3115.78223, 63.8785706, -9808.38574, -0.913427353, 3.11199457e-08, 0.407000452, 7.79564235e-09, 1, -5.89660658e-08, -0.407000452, -5.06883708e-08, -0.913427353)
+				
+				if SelectMonster == "Sea Soldier" then
+				else
+					Next_Level_X = 1450
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1450 or SelectMonster == "Water Fighter" then -- Water Fighter
+				if game.Players.LocalPlayer.Data.Level.Value >= 1475 then
+					SelectBoss_P = "Tide Keeper"
+				end
+				Ms = "Water Fighter"
+				NameQuest = "ForgottenQuest"
+				QuestLv = 2
+				NameMon = "Water Fighter"
+				CFrameQ = CFrame.new(-3054.44458, 235.544281, -10142.8193, 0.990270376, -0, -0.13915664, 0, 1, -0, 0.13915664, 0, 0.990270376)
+				CFrameMon = CFrame.new(-3212.99683, 263.809296, -10551.8799, 0.742111444, -5.59139615e-08, -0.670276582, 1.69155214e-08, 1, -6.46908234e-08, 0.670276582, 3.66697037e-08, 0.742111444)
+				
+				if SelectMonster == "Water Fighter" then
+				else
+					Next_Level_X = 9999
+				end
+				SelectMonster = "Sea Soldier"
+			end
+		end
+		if Three_World then
+			if game.Players.LocalPlayer.Data.Level.Value >= 1500 and game.Players.LocalPlayer.Data.Level.Value <= 1524 or SelectMonster == "Pirate Millionaire" then -- Pirate Millionaire
+				Ms = "Pirate Millionaire"
+				NameQuest = "PiratePortQuest"
+				QuestLv = 1
+				NameMon = "Pirate Millionaire"
+				CFrameQ = CFrame.new(-290.074677, 42.9034653, 5581.58984, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+				CFrameMon = CFrame.new(81.164993286133, 43.755737304688, 5724.7021484375)
+				
+				if SelectMonster == "Pirate Millionaire" then
+				else
+					Next_Level_X = 1525
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1525 and game.Players.LocalPlayer.Data.Level.Value <= 1574 or SelectMonster == "Pistol Billionaire" then -- Pistol Billionaire
+				if game.Players.LocalPlayer.Data.Level.Value >= 1550 then
+					SelectBoss_P = "Stone"
+				end
+				Ms = "Pistol Billionaire"
+				NameQuest = "PiratePortQuest"
+				QuestLv = 2
+				NameMon = "Pistol Billionaire"
+				CFrameQ = CFrame.new(-290.074677, 42.9034653, 5581.58984, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+				CFrameMon = CFrame.new(81.164993286133, 43.755737304688, 5724.7021484375)
+				
+				if SelectMonster == "Pistol Billionaire" then
+				else
+					Next_Level_X = 1575 
+				end
+				
+				SelectMonster = "Pirate Millionaire"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1575 and game.Players.LocalPlayer.Data.Level.Value <= 1599 or SelectMonster == "Dragon Crew Warrior" then -- Dragon Crew Warrior
+				Ms = "Dragon Crew Warrior"
+				NameQuest = "AmazonQuest"
+				QuestLv = 1
+				NameMon = "Dragon Crew Warrior"
+				CFrameQ = CFrame.new(5832.83594, 51.6806107, -1101.51563, 0.898790359, -0, -0.438378751, 0, 1, -0, 0.438378751, 0, 0.898790359)
+				CFrameMon = CFrame.new(6241.9951171875, 51.522083282471, -1243.9771728516)
+				
+				if SelectMonster == "Dragon Crew Warrior" then
+				else
+					Next_Level_X = 1600
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1600 and game.Players.LocalPlayer.Data.Level.Value <= 1624 or SelectMonster == "Dragon Crew Archer" then -- Dragon Crew Archer
+				Ms = "Dragon Crew Archer"
+				NameQuest = "AmazonQuest"
+				QuestLv = 2
+				NameMon = "Dragon Crew Archer"
+				CFrameQ = CFrame.new(5832.83594, 51.6806107, -1101.51563, 0.898790359, -0, -0.438378751, 0, 1, -0, 0.438378751, 0, 0.898790359)
+				CFrameMon = CFrame.new(6488.9155273438, 383.38375854492, -110.66246032715)
+				
+				if SelectMonster == "Dragon Crew Archer" then
+				else
+					Next_Level_X = 1625
+				end
+				SelectMonster = "Dragon Crew Warrior"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1625 and game.Players.LocalPlayer.Data.Level.Value <= 1649 or SelectMonster == "Female Islander" then 
+				Ms = "Female Islander"
+				NameQuest = "AmazonQuest2"
+				QuestLv = 1
+				NameMon = "Female Islander"
+				CFrameQ = CFrame.new(5448.86133, 601.516174, 751.130676, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+				CFrameMon = CFrame.new(4770.4990234375, 758.95520019531, 1069.8680419922)
+				
+				if SelectMonster == "Female Islander" then
+				else
+					Next_Level_X = 1650
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1650 and game.Players.LocalPlayer.Data.Level.Value <= 1699 or SelectMonster == "Giant Islander" then -- Giant Islander
+				Ms = "Giant Islander"
+				NameQuest = "AmazonQuest2"
+				QuestLv = 2
+				NameMon = "Giant Islander"
+				CFrameQ = CFrame.new(5448.86133, 601.516174, 751.130676, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+				CFrameMon = CFrame.new(4530.3540039063, 656.75695800781, -131.60952758789)
+				if game.Players.LocalPlayer.Data.Level.Value >= 1675 then
+					SelectBoss_P = "Island Empress"
+				end
+				if SelectMonster == "Giant Islander" then
+				else
+					Next_Level_X = 1700
+				end
+			
+				SelectMonster = "Female Islander"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1700 and game.Players.LocalPlayer.Data.Level.Value <= 1774 or SelectMonster == "Marine Commodore" then -- Marine Commodore
+				Ms = "Marine Commodore"
+				NameQuest = "MarineTreeIsland"
+				QuestLv = 1
+				NameMon = "Marine Commodore"
+				CFrameQ = CFrame.new(2180.54126, 27.8156815, -6741.5498, -0.965929747, 0, 0.258804798, 0, 1, 0, -0.258804798, 0, -0.965929747)
+				CFrameMon = CFrame.new(2490.0844726563, 190.4232635498, -7160.0502929688)
+				if game.Players.LocalPlayer.Data.Level.Value >= 1750 then
+					SelectBoss_P = "Kilo Admiral"
+				end
+				if SelectMonster == "Marine Commodore" then
+				else
+					Next_Level_X = 1775
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1775 and game.Players.LocalPlayer.Data.Level.Value <= 1799 or SelectMonster == "Fishman Raider" then -- Fishman Raider
+				Ms = "Fishman Raider"
+				NameQuest = "DeepForestIsland3"
+				QuestLv = 1
+				NameMon = "Fishman Raider"
+				CFrameQ = CFrame.new(-10581.6563, 330.872955, -8761.18652, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
+				CFrameMon = CFrame.new(-10322.400390625, 390.94473266602, -8580.0908203125)
+				
+				if SelectMonster == "Fishman Raider" then
+				else
+					Next_Level_X = 1800
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1800 and game.Players.LocalPlayer.Data.Level.Value <= 1824 or SelectMonster == "Fishman Captain" then -- Fishman Captain
+				Ms = "Fishman Captain"
+				NameQuest = "DeepForestIsland3"
+				QuestLv = 2
+				NameMon = "Fishman Captain"
+				CFrameQ = CFrame.new(-10581.6563, 330.872955, -8761.18652, -0.882952213, 0, 0.469463557, 0, 1, 0, -0.469463557, 0, -0.882952213)
+				CFrameMon = CFrame.new(-11194.541992188, 442.02795410156, -8608.806640625)
+				
+				if SelectMonster == "Fishman Captain" then
+				else
+					Next_Level_X = 1825
+				end
+				SelectMonster = "Fishman Raider"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1825 and game.Players.LocalPlayer.Data.Level.Value <= 1849 or SelectMonster == "Forest Pirate" then -- Forest Pirate
+				Ms = "Forest Pirate"
+				NameQuest = "DeepForestIsland"
+				QuestLv = 1
+				NameMon = "Forest Pirate"
+				CFrameQ = CFrame.new(-13234.04, 331.488495, -7625.40137, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
+				CFrameMon = CFrame.new(-13225.809570313, 428.19387817383, -7753.1245117188)
+				
+				if SelectMonster == "Forest Pirate" then
+				else
+					Next_Level_X = 1850
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1850 and game.Players.LocalPlayer.Data.Level.Value <= 1899 or SelectMonster == "Mythological Pirate" then -- Mythological Pirate
+				Ms = "Mythological Pirate"
+				NameQuest = "DeepForestIsland"
+				QuestLv = 2
+				NameMon = "Mythological Pirate"
+				CFrameQ = CFrame.new(-13234.04, 331.488495, -7625.40137, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
+				CFrameMon = CFrame.new(-13869.172851563, 564.95251464844, -7084.4135742188)
+				if game.Players.LocalPlayer.Data.Level.Value >= 1875 then
+					SelectBoss_P = "Captain Elephant" 
+				end
+				if SelectMonster == "Mythological Pirate" then
+				else
+					Next_Level_X = 1900
+				end
+			
+				SelectMonster = "Forest Pirate"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1900 and game.Players.LocalPlayer.Data.Level.Value <= 1924 or SelectMonster == "Jungle Pirate" then -- Jungle Pirate
+				Ms = "Jungle Pirate"
+				NameQuest = "DeepForestIsland2"
+				QuestLv = 1
+				NameMon = "Jungle Pirate"
+				CFrameQ = CFrame.new(-12680.3818, 389.971039, -9902.01953, -0.0871315002, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, -0.0871315002)
+				CFrameMon = CFrame.new(-11982.221679688, 376.32522583008, -10451.415039063)
+				
+				if SelectMonster == "Jungle Pirate" then
+				else
+					Next_Level_X = 1925
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1925 and game.Players.LocalPlayer.Data.Level.Value <= 1974 or SelectMonster == "Musketeer Pirate" then -- Musketeer Pirate
+				Ms = "Musketeer Pirate"
+				NameQuest = "DeepForestIsland2"
+				QuestLv = 2
+				NameMon = "Musketeer Pirate"
+				CFrameQ = CFrame.new(-12680.3818, 389.971039, -9902.01953, -0.0871315002, 0, 0.996196866, 0, 1, 0, -0.996196866, 0, -0.0871315002)
+				CFrameMon = CFrame.new(-13282.3046875, 496.23684692383, -9565.150390625)
+				
+				if SelectMonster == "Musketeer Pirate" then
+				else
+					Next_Level_X = 1975
+				end
+				if game.Players.LocalPlayer.Data.Level.Value >= 1950 then
+					SelectBoss_P = "Beautiful Pirate"
+				end
+				SelectMonster = "Jungle Pirate"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 1975 and game.Players.LocalPlayer.Data.Level.Value <= 1999 or SelectMonster == "Reborn Skeleton" then
+				Ms = "Reborn Skeleton"
+				NameQuest = "HauntedQuest1"
+				QuestLv = 1
+				NameMon = "Reborn Skeleton"
+				CFrameQ = CFrame.new(-9480.8271484375, 142.13066101074, 5566.0712890625)
+				CFrameMon = CFrame.new(-8817.880859375, 191.16761779785, 6298.6557617188)
+				
+				if SelectMonster == "Reborn Skeleton" then
+				elseif not LevelMax then
+					Next_Level_X = 2000
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2000 and game.Players.LocalPlayer.Data.Level.Value <= 2024 or SelectMonster == "Living Zombie" then
+				Ms = "Living Zombie"
+				NameQuest = "HauntedQuest1"
+				QuestLv = 2
+				NameMon = "Living Zombie"
+				CFrameQ = CFrame.new(-9480.8271484375, 142.13066101074, 5566.0712890625)
+				CFrameMon = CFrame.new(-10125.234375, 183.94705200195, 6242.013671875)
+				
+				if SelectMonster == "Living Zombie" then
+				elseif not LevelMax then
+					Next_Level_X = 2025
+				end
+				SelectMonster = "Reborn Skeleton"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2025 and game.Players.LocalPlayer.Data.Level.Value <= 2049  or  SelectMonster == "Demonic Soul" then
+				Ms = "Demonic Soul"
+				NameQuest = "HauntedQuest2"
+				QuestLv = 1
+				NameMon = "Demonic"
+				CFrameQ = CFrame.new(-9516.9931640625, 178.00651550293, 6078.4653320313)
+				CFrameMon = CFrame.new(-9712.03125, 204.69589233398, 6193.322265625)
+				
+				if SelectMonster == "Demonic Soul" then
+				else
+					Next_Level_X = 2050
+				end
+				SelectMonster = "Living Zombie"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2050 and game.Players.LocalPlayer.Data.Level.Value <= 2074 or SelectMonster == "Posessed Mummy" then
+				Ms = "Posessed Mummy"
+				NameQuest = "HauntedQuest2"
+				QuestLv = 2
+				NameMon = "Posessed Mummy"
+				CFrameQ = CFrame.new(-9516.9931640625, 178.00651550293, 6078.4653320313)
+				CFrameMon = CFrame.new(-9545.7763671875, 69.619895935059, 6339.5615234375)    
+				
+				if SelectMonster == "Posessed Mummy" then
+				else
+					Next_Level_X = 2075
+				end
+				SelectMonster = "Demonic Soul"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2075 and game.Players.LocalPlayer.Data.Level.Value <= 2099 or SelectMonster == "Peanut Scout" then
+				Ms = "Peanut Scout"
+				NameQuest = "NutsIslandQuest"
+				QuestLv = 1
+				NameMon = "Peanut Scout"
+				CFrameQ = CFrame.new(-2104.17163, 38.1299706, -10194.418, 0.758814394, -1.38604395e-09, 0.651306927, 2.85280208e-08, 1, -3.1108879e-08, -0.651306927, 4.21863646e-08, 0.758814394)
+				CFrameMon = CFrame.new(-2098.07544, 192.611862, -10248.8867, 0.983392298, -9.57031787e-08, 0.181492642, 8.7276355e-08, 1, 5.44169616e-08, -0.181492642, -3.76732068e-08, 0.983392298)
+				
+				if SelectMonster == "Peanut Scout" then
+				else
+					Next_Level_X = 2100
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2100 and game.Players.LocalPlayer.Data.Level.Value <= 2124 or SelectMonster == "Peanut President" then
+				Ms = "Peanut President"
+				NameQuest = "NutsIslandQuest"
+				QuestLv = 2
+				NameMon = "Peanut President"
+				CFrameQ = CFrame.new(-2104.17163, 38.1299706, -10194.418, 0.758814394, -1.38604395e-09, 0.651306927, 2.85280208e-08, 1, -3.1108879e-08, -0.651306927, 4.21863646e-08, 0.758814394)
+				CFrameMon = CFrame.new(-1876.95959, 192.610947, -10542.2939, 0.0553516336, -2.83836812e-08, 0.998466909, -6.89634405e-10, 1, 2.84654931e-08, -0.998466909, -2.26418861e-09, 0.0553516336)
+				SelectMonster = "Peanut Scout"
+				
+				if SelectMonster == "Peanut President" then
+				else
+					Next_Level_X = 2125
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2125 and game.Players.LocalPlayer.Data.Level.Value <= 2149 or SelectMonster == "Ice Cream Chef" then
+				Ms = "Ice Cream Chef"
+				NameQuest = "IceCreamIslandQuest"
+				QuestLv = 1
+				NameMon = "Ice Cream Chef"
+				CFrameQ = CFrame.new(-820.404358, 65.8453293, -10965.5654, 0.822534859, 5.24448502e-08, -0.568714678, -2.08336317e-08, 1, 6.20846663e-08, 0.568714678, -3.92184099e-08, 0.822534859)
+				CFrameMon = CFrame.new(-821.614075, 208.39537, -10990.7617, -0.870096624, 3.18909272e-08, 0.492881238, -1.8357893e-08, 1, -9.71107568e-08, -0.492881238, -9.35439957e-08, -0.870096624)
+				
+				if SelectMonster == "Ice Cream Chef" then
+				else
+					Next_Level_X = 2150
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2150 and game.Players.LocalPlayer.Data.Level.Value <= 2199 or SelectMonster == "Ice Cream Commander" then 
+				Ms = "Ice Cream Commander"
+				NameQuest = "IceCreamIslandQuest"
+				QuestLv = 2
+				NameMon = "Ice Cream Commander"
+				CFrameQ = CFrame.new(-819.376526, 67.4634171, -10967.2832)
+				CFrameMon = CFrame.new(-610.11669921875, 208.26904296875, -11253.686523438)
+				
+				if SelectMonster == "Ice Cream Commander" then
+				else
+					Next_Level_X = 2200
+				end
+				if game.Players.LocalPlayer.Data.Level.Value >= 2175 then
+					SelectBoss_P = "Cake Queen"
+				end
+				SelectMonster = "Ice Cream Chef"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2200 and game.Players.LocalPlayer.Data.Level.Value <= 2224 or SelectMonster == "Cookie Crafter" then 
+				Ms = "Cookie Crafter"
+				NameQuest = "CakeQuest1"
+				QuestLv = 1
+				NameMon = "Cookie Crafter"
+				CFrameQ = CFrame.new(-2020.6068115234375, 37.82400894165039, -12027.80859375)
+				CFrameMon = CFrame.new(-2286.684326171875, 146.5656280517578, -12226.8818359375)
+				
+				if SelectMonster == "Cookie Crafter" then
+				elseif not LevelMax then
+					Next_Level_X = 2225
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2225 and game.Players.LocalPlayer.Data.Level.Value <= 2249 or SelectMonster == "Cake Guard" then 
+				Ms = "Cake Guard"
+				NameQuest = "CakeQuest1"
+				QuestLv = 2
+				NameMon = "Cake Guard"
+				CFrameQ = CFrame.new(-2020.6068115234375, 37.82400894165039, -12027.80859375)
+				CFrameMon = CFrame.new(-1817.9747314453125, 209.5632781982422, -12288.9228515625)
+				SelectMonster = "Cookie Crafter"
+				
+				if SelectMonster == "Cake Guard" then
+				elseif not LevelMax then
+					Next_Level_X = 2250
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2250 and game.Players.LocalPlayer.Data.Level.Value < 2300 or SelectMonster == "Baking Staff" then 
+				Ms = "Baking Staff"
+				NameQuest = "CakeQuest2"
+				QuestLv = 1
+				NameMon = "Baking Staff"
+				CFrameQ = CFrame.new(-1928.31763, 37.7296638, -12840.626)
+				CFrameMon = CFrame.new(-1818.347900390625, 93.41275787353516, -12887.66015625)
+				
+				if SelectMonster == "Baking Staff" then
+				elseif not LevelMax then
+					Next_Level_X = 2300
+				end
+				
+				SelectMonster = "Cookie Crafter"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2300 and game.Players.LocalPlayer.Data.Level.Value < 2325 or SelectMonster == "Cocoa Warrior" then 
+				Ms = "Cocoa Warrior"
+				NameQuest = "ChocQuest1"
+				QuestLv = 1
+				NameMon = "Cocoa Warrior"
+				CFrameQ = CFrame.new(230.19186401367188, 24.7342586517334, -12202.6572265625)
+				CFrameMon = CFrame.new(24.617475509643555, 24.734342575073242, -12227.267578125)
+				if SelectMonster == "Cocoa Warrior" then
+				else
+					Next_Level_X = 2325
+				end
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2325 and game.Players.LocalPlayer.Data.Level.Value < 2350 or SelectMonster == "Chocolate Bar Battler" then 
+				Ms = "Chocolate Bar Battler"
+				NameQuest = "ChocQuest1"
+				QuestLv = 2
+				NameMon = "Chocolate Bar Battler"
+				CFrameQ = CFrame.new(230.19186401367188, 24.7342586517334, -12202.6572265625)
+				CFrameMon = CFrame.new(658.2230224609375, 24.7342586517334, -12541.9912109375)
+				if SelectMonster == "Chocolate Bar Battler" then
+				else
+					Next_Level_X = 2350
+				end
+				SelectMonster = "Cocoa Warrior"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2350 and game.Players.LocalPlayer.Data.Level.Value < 2375 or SelectMonster == "Sweet Thief" then 
+				Ms = "Sweet Thief"
+				NameQuest = "ChocQuest2"
+				QuestLv = 1
+				NameMon = "Sweet Thief"
+				CFrameQ = CFrame.new(149.1439208984375, 24.7938289642334, -12775.41015625)
+				CFrameMon = CFrame.new(51.61184310913086, 24.79380989074707, -12574.873046875)
+				if SelectMonster == "Sweet Thief" then
+				else
+					Next_Level_X = 2375
+				end
+				SelectMonster = "Chocolate Bar Battler"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2375 and game.Players.LocalPlayer.Data.Level.Value < 2400 or SelectMonster == "Candy Rebel" then 
+				Ms = "Candy Rebel" 
+				NameQuest = "ChocQuest2"
+				QuestLv = 2
+				NameMon = "Candy Rebel"
+				CFrameQ = CFrame.new(149.1439208984375, 24.7938289642334, -12775.41015625)
+				CFrameMon = CFrame.new(28.345605850219727, 24.79380226135254, -12949.5029296875)
+				if SelectMonster == "Candy Rebel" then
+				else
+					Next_Level_X = 2400
+				end
+				SelectMonster = "Sweet Thief"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2400 and game.Players.LocalPlayer.Data.Level.Value < 2425 or SelectMonster == "Candy Pirate"  then
+				Ms = "Candy Pirate" 
+				NameQuest = "CandyQuest1"
+				QuestLv = 1
+				NameMon = "Candy Pirate"
+				CFrameQ = CFrame.new(-1146.80810546875, 16.107254028320312, -14444.353515625)
+				CFrameMon = CFrame.new(-1333.9425048828125, 16.907636642456055, -14424.8447265625)
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2425 and game.Players.LocalPlayer.Data.Level.Value < 2550 or SelectMonster == "Snow Demon" then
+				Ms = "Snow Demon"
+				NameQuest = "CandyQuest1"
+				QuestLv = 2
+				NameMon = "Snow Demon"
+				CFrameQ = CFrame.new(-1146.80810546875, 16.107254028320312, -14444.353515625)
+				CFrameMon = CFrame.new(-963.0213012695312, 16.1071834564209, -14289.576171875)
+				if SelectMonster == "Candy Pirate" then
+				else
+					Next_Level_X = 2551
+				end
+				SelectMonster = "Candy Pirate"
+			elseif game.Players.LocalPlayer.Data.Level.Value >= 2550 then
+				Ms = "Baking Staff"
+				NameQuest = "CakeQuest2"
+				QuestLv = 1
+				NameMon = "Baking Staff"
+				CFrameQ = CFrame.new(-1928.31763, 37.7296638, -12840.626)
+				CFrameMon = CFrame.new(-1818.347900390625, 93.41275787353516, -12887.66015625)
+				
+				SelectMonster = "Cookie Crafter"
+				local Lp = tostring(string.match(tostring(game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")), "%d+"))
+				if Lp == 'nil' or Lp == nil then
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner",true)
+					Cake_Prince_S:Set(' Cake Prince : Boss Spawn')
+				else
+					Cake_Prince_S:Set(' Cake Prince : '..Lp)
+				end
+			end
+		end
+	end
 	function GetSkill_C(NameW,Skill)
 		for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.Skills:GetChildren()) do
 			if v.Name == NameW then
@@ -6046,7 +6653,7 @@ Module.FastAttack = (function()
 
 	task.spawn(function()
 		while task.wait(Settings.ClickDelay or 0.125) do
-			if (tick() - Module.AttackCooldown) < 0.4833333194255829 then continue end
+			if (tick() - Module.AttackCooldown) < 0.2833333194255829 then continue end
 			if not Settings.AutoClick then continue end
 			if not Module.IsAlive(client.Character) then continue end
 			if not client.Character:FindFirstChildOfClass("Tool") then continue end
