@@ -5526,6 +5526,7 @@ Tabs.Misc:AddButton({
         Hop()
     end
 })
+-- FastAttack 
 local environment, replicatedstorage, players, net, client, modulepath, characterfolder, enemyfolder do
 	environment = (getgenv or getrenv or getfenv)()
 	replicatedstorage = game:GetService("ReplicatedStorage")
@@ -5622,7 +5623,7 @@ Module.FastAttack = (function()
 
 	task.spawn(function()
 		while task.wait(Settings.ClickDelay or 0.125) do
-			if (tick() - Module.AttackCooldown) < 0.4833333194255829 then continue end
+			if (tick() - Module.AttackCooldown) < 0.2833333194255829 then continue end
 			if not Settings.AutoClick then continue end
 			if not Module.IsAlive(client.Character) then continue end
 			if not client.Character:FindFirstChildOfClass("Tool") then continue end
