@@ -2033,7 +2033,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 55, 0, 50)
 ImageButton.Draggable = true
-ImageButton.Image = "rbxassetid://82496531647577"
+ImageButton.Image = "rbxassetid://82059635556284"
 
 UICorner.Parent = ImageButton	
 
@@ -2060,12 +2060,12 @@ ImageButton.MouseButton1Down:Connect(function()
 end)
 
 local Window = Fluent:CreateWindow({
-    Title = "Razer Hub " .. Fluent.Version,
+    Title = "Rocket Hub " .. Fluent.Version,
     SubTitle = "Version : Thai & England",
     TabWidth = 100,
     Size = UDim2.fromOffset(480, 380),
     Acrylic = false,
-    Theme = "Dark",
+    Theme = "Light",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
@@ -2087,17 +2087,17 @@ end
 
 PosY = "35"
 
-local Main = Tabs.Main:AddSection("เครดิต Credit")
+local Main = Tabs.Main:AddSection("Credit")
 Tabs.Main:AddParagraph({
-        Title = "Razer Hub "
+        Title = "⚡ Credit you Razer Hub"
 })
 Tabs.Main:AddButton({
     Title = "YouTube : Razer Hub",
-    Description = "Razer Hub",
+    Description = "ช่องยูทูป Razer Hub",
     Callback = function()
     game.StarterGui:SetCore("SendNotification", {
-        Title = "Razer Hub",
-        Text = "Press Follow Channel Razer Hub",
+        Title = "คุณ : Razer Hub ✅",
+        Text = "Press Follow Channel @Razer Hub",
         Duration = 6
     })
         setclipboard("https://youtube.com/@rocketscript?si=4h1ShiGwW4ECKeMr")
@@ -2105,11 +2105,11 @@ Tabs.Main:AddButton({
 })
 Tabs.Main:AddButton({
     Title = "Discord : Razer Hub",
-    Description = "ช่องดิสคอร์ดของผู้ทำโปร",
+    Description = "ดิสคอร์ด Razer Hub",
     Callback = function()
     game.StarterGui:SetCore("SendNotification", {
-        Title = "Razer Hub",
-        Text = "Discord : Razer Hub ",
+        Title = "คุณ : Razer Hub✅",
+        Text = "Discord : Razer Hub",
         Icon = "rbxassetid://18888999404",
         Duration = 6
     })
@@ -5528,96 +5528,61 @@ Tabs.Misc:AddButton({
 })
 
 
-_G.FastAttack = true
-_G.RangeToMonster = 60
-_G.Fast_Delay = 0.175
+ocal Attack = true
 
-local plr = game.Players.LocalPlayer
-local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
-local CbFw2 = CbFw[2]
+for _, v in next, getgc() do
+    if typeof(v) == "function" then
+        local name = debug.info(v, 'n')
 
-function GetCurrentBlade() 
-    local p13 = CbFw2.activeController
-    local ret = p13.blades[1]
-    if not ret then return end
-    while ret.Parent ~= game.Players.LocalPlayer.Character do ret = ret.Parent end
-    return ret
-end
-
-function AttackNoCD() 
-    local AC = CbFw2.activeController
-    AC.hitboxMagnitude = 200
-
-    local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
-        plr.Character,
-        {plr.Character.HumanoidRootPart},
-        1000
-    )
-    local cac = {}
-    local hash = {}
-
-    for _, v in pairs(game.Workspace.Enemies:GetChildren()) do
-        if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and not hash[v] then
-            table.insert(cac, v.HumanoidRootPart)
-            hash[v] = true
+        if name == "attackMelee" then
+            local old_hooked = nil
+            old_hooked = hookfunction(v, function(a, f)
+                if Attack then
+                    return old_hooked(0, f)
+                end
+                return old_hooked(a, f)
+            end)
         end
-    end
 
-    bladehit = cac
-    if #bladehit > 0 then
-        local u8 = debug.getupvalue(AC.attack, 5)
-        local u9 = debug.getupvalue(AC.attack, 6)
-        local u7 = debug.getupvalue(AC.attack, 4)
-        local u10 = debug.getupvalue(AC.attack, 7)
-        local u12 = (u8 * 798405 + u7 * 727595) % u9
-        local u13 = u7 * 798405
-
-        (function()
-            u12 = (u12 * u9 + u13) % 1099511627776
-            u8 = math.floor(u12 / u9)
-            u7 = u12 - u8 * u9
-        end)()
-
-        u10 = u10 + 1
-        debug.setupvalue(AC.attack, 5, u8)
-        debug.setupvalue(AC.attack, 6, u9)
-        debug.setupvalue(AC.attack, 4, u7)
-        debug.setupvalue(AC.attack, 7, u10)
-
-        pcall(function()
-            for _, v in pairs(AC.animator.anims.basic) do
-                v:Play()
-            end                  
-        end)
-
-        if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then 
-            game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange", tostring(GetCurrentBlade()))
-            game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215), u10)
-            game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 1, "") 
+        if name == "spawnFunction" then
+            local old_spawn = nil
+            old_spawn = hookfunction(v, function(func, ...)
+                if Attack then
+                    local args = {...}
+                    if typeof(args[2]) == "number" then
+                        args[2] = 3
+                    end
+                    return old_spawn(func, unpack(args))
+                end
+                return old_spawn(func, ...)
+            end)
         end
     end
 end
 
-function excusyzhub_IsNearMonster()
-    for _, enemy in pairs(game.Workspace.Enemies:GetChildren()) do
-        if enemy:FindFirstChild("HumanoidRootPart") and enemy:FindFirstChild("Humanoid") and enemy.Humanoid.Health > 0 then
-            local distance = (enemy.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position).magnitude
-            if distance <= _G.RangeToMonster then
-                currentTarget = enemy -- ตั้งค่าเป้าหมายปัจจุบัน
-                return true
-            end
+local OldWeaponData = function(self, nnn)
+    local Data = OldGetWeaponData(self, nnn)
+    if Attack then
+        Data.HitboxMagnitude = 100
+    end
+    return Data
+end
+
+local OldGetMovesetAnimCache = function(self, nnn)
+    local Data = OldGetMovesetAnimCache(self, nnn)
+    if Attack then
+        local index = ...
+        if string.find(index, "-basic", 1, true) then
+            local rspy = string.sub(index, 1, #index - 1)
+            return Data[rspy.."3"] or Data[rspy.."2"]
         end
     end
-    currentTarget = nil
-    return false
+    return Data
 end
-excusyzhub_IsNearMonster()
+
 task.spawn(function()
-    while task.wait(_G.Fast_Delay) do
-        if _G.FastAttack then
-            pcall(AttackNoCD)
-        end
-    end
+    task.wait(1)
+    require(game:GetService("ReplicatedStorage").Util.CameraShaker):Stop()
 end)
 
 task.spawn(function()
