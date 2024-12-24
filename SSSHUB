@@ -2117,7 +2117,7 @@ Tabs.Main:AddButton({
     end
 })
 local Main = Tabs.Main:AddSection("เมนูหลัก")
-local SelectWeapon = Tabs.Sg:AddDropdown("SelectWeapon", {
+ocal SelectWeapon = Tabs.Main:AddDropdown("SelectWeapon", {
     Title = "เลือกอาวุธ",
     Description = "Select Combat/Weapon", 
     Values = {"หมัด","ดาบ","ปืน","ผลปีศาจ"},
@@ -3230,19 +3230,6 @@ local Toggle = Tabs.Main:AddToggle("Auto Skill", {
 })
 
 local Main = Tabs.Sg:AddSection("เมนูตั้งค่าฟาร์ม")
-
-
-local SelectFast = Tabs.Sg:AddDropdown("SelectWeapon", {
-    Title = "เลือกความเร็ว Fast Attack",
-    Description = "Select Fast Attack", 
-    Values = {"Noob Fast","Normal Fast","Super Fast"},
-    Multi = false,
-    Default = 2,
-})
-SelectFast:OnChanged(function(Value)
-    _G.FastAttackType = Value
-end)   
-
 local Toggle = Tabs.Sg:AddToggle("Haki", {
     Title = "ออโต้เปิดฮาคิ", 
     Description = "Auto Haki", 
