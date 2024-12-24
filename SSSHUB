@@ -2064,19 +2064,19 @@ local Window = Fluent:CreateWindow({
     SubTitle = "Version : Thai & England",
     TabWidth = 100,
     Size = UDim2.fromOffset(480, 380),
-    Acrylic = true,
+    Acrylic = false,
     Theme = "Light",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 local Tabs = {
     Main = Window:AddTab({ Title = "General", Icon = "rbxassetid://15712703260" }),
-    Sg = Window:AddTab({ Title = "Settings", Icon = "settings" }),
     IQ = Window:AddTab({ Title = "Items & Quest", Icon = "swords" }),
     Stats = Window:AddTab({ Title = "Status Tab", Icon = "chevrons-up" }),
     TP = Window:AddTab({ Title = "Island", Icon = "rbxassetid://15712738876" }),
     ESP = Window:AddTab({ Title = "ESP", Icon = "eye" }),   
     Shop = Window:AddTab({ Title = "Shop", Icon = "rbxassetid://15712767144" }), 
+    Sg = Window:AddTab({ Title = "Settings", Icon = "settings" }),
     Misc = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://15712771666" }),
 }
 
