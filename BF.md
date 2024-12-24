@@ -5584,18 +5584,3 @@ task.spawn(function()
     task.wait(1)
     require(game:GetService("ReplicatedStorage").Util.CameraShaker):Stop()
 end)
-
-task.spawn(function()
-    while true do
-        if _G.FastAttack then
-            if _G.FastAttackType == "Noob Fast" then
-                _G.Fast_Delay = 0.4
-            elseif _G.FastAttackType == "Normal Fast" then
-                _G.Fast_Delay = 0.2
-            elseif _G.FastAttackType == "Super Fast" then
-                _G.Fast_Delay = 0.1
-            end
-        end
-        task.wait()
-    end
-end)
