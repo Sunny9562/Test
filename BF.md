@@ -3727,12 +3727,10 @@ spawn(function()
 end)
 
 local Toggle = Tabs.IQ:AddToggle("Auto Swords", {
-    Title = "ออโต้ทำดาบ แชงค์คูส", 
-    Description = "Auto Saber [Sword]",
-    Default = false,
-    Callback = function(Value)
-        _G.AutoSaberSword = Value
-        StopTween( _G.AutoSaberSword)
+    Title = "Auto Saber Quest",
+		Default = false,
+		Callback = function(tr)
+			Configs.Farming.Sea1.AutoSaberQuest = tr;
     end
 })
 spawn(function()
