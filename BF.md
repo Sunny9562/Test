@@ -3627,7 +3627,7 @@ local Main = Tabs.IQ:AddSection("เมนูดาบต่างๆ")
 local Toggle = Tabs.IQ:AddToggle("Auto Swords", {
     Title = "ออโต้ทำดาบ เวเดน", 
     Description = "Auto Warden [Sword]",
-    Default = true,
+    Default = false,
     Callback = function(Value)
         _G.AutoWardenSword = Value
         StopTween( _G.AutoWardenSword)
@@ -3727,10 +3727,12 @@ spawn(function()
 end)
 
 local Toggle = Tabs.IQ:AddToggle("Auto Swords", {
-    Title = "Auto Saber Quest",
-		Default = false,
-		Callback = function(tr)
-			Configs.Farming.Sea1.AutoSaberQuest = tr;
+    Title = "ออโต้ทำดาบ แชงค์คูส", 
+    Description = "Auto Saber [Sword]",
+    Default = false,
+    Callback = function(Value)
+        _G.AutoSaberSword = Value
+        StopTween( _G.AutoSaberSword)
     end
 })
 spawn(function()
