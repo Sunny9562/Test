@@ -5528,74 +5528,62 @@ Tabs.Misc:AddButton({
 })
 
 
-ocal Attack = true
+-- หยุดการสั่นของกล้อง
+local StopCamera = require(game.ReplicatedStorage.Util.CameraShaker)
+StopCamera:Stop()
 
-for _, v in next, getgc() do
-    if typeof(v) == "function" then
-        local name = debug.info(v, 'n')
-
-        if name == "attackMelee" then
-            local old_hooked = nil
-            old_hooked = hookfunction(v, function(a, f)
-                if Attack then
-                    return old_hooked(0, f)
+-- ระบบ Fast Attack
+coroutine.wrap(function()
+    for _, func in pairs(getreg()) do
+        if typeof(func) == "function" and getfenv(func).script == game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework then
+            for _, upvalue in pairs(debug.getupvalues(func)) do
+                if typeof(upvalue) == "table" then
+                    spawn(function()
+                        game:GetService("RunService").RenderStepped:Connect(function()
+                            if getgenv().Config["FastAttack"] then
+                                pcall(function()
+                                    upvalue.activeController.timeToNextAttack = 0
+                                    upvalue.activeController.attacking = false
+                                    upvalue.activeController.increment = 4
+                                    upvalue.activeController.blocking = false
+                                    upvalue.activeController.hitboxMagnitude = 150
+                                    upvalue.activeController.humanoid.AutoRotate = true
+                                    upvalue.activeController.focusStart = 0
+                                    upvalue.activeController.currentAttackTrack = 0
+                                    sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+                                end)
+                            end
+                        end)
+                    end)
                 end
-                return old_hooked(a, f)
-            end)
-        end
-
-        if name == "spawnFunction" then
-            local old_spawn = nil
-            old_spawn = hookfunction(v, function(func, ...)
-                if Attack then
-                    local args = {...}
-                    if typeof(args[2]) == "number" then
-                        args[2] = 3
-                    end
-                    return old_spawn(func, unpack(args))
-                end
-                return old_spawn(func, ...)
-            end)
-        end
-    end
-end
-
-local OldWeaponData = function(self, nnn)
-    local Data = OldGetWeaponData(self, nnn)
-    if Attack then
-        Data.HitboxMagnitude = 100
-    end
-    return Data
-end
-
-local OldGetMovesetAnimCache = function(self, nnn)
-    local Data = OldGetMovesetAnimCache(self, nnn)
-    if Attack then
-        local index = ...
-        if string.find(index, "-basic", 1, true) then
-            local rspy = string.sub(index, 1, #index - 1)
-            return Data[rspy.."3"] or Data[rspy.."2"]
-        end
-    end
-    return Data
-end
-
-task.spawn(function()
-    task.wait(1)
-    require(game:GetService("ReplicatedStorage").Util.CameraShaker):Stop()
-end)
-
-task.spawn(function()
-    while true do
-        if _G.FastAttack then
-            if _G.FastAttackType == "Noob Fast" then
-                _G.Fast_Delay = 0.4
-            elseif _G.FastAttackType == "Normal Fast" then
-                _G.Fast_Delay = 0.2
-            elseif _G.FastAttackType == "Super Fast" then
-                _G.Fast_Delay = 0.1
             end
         end
-        task.wait()
+    end
+end)()
+
+-- ระบบ Click Attack
+spawn(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if getgenv().Config["ClickAttack"] then
+            pcall(function()
+                game:GetService("VirtualUser"):CaptureController()
+                game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
+            end)
+        end
+    end)
+end)
+
+-- ระบบ RegisterAttack และ RegisterHit
+spawn(function()
+    while wait() do
+        if getgenv().Config["FastAttack"] or getgenv().Config["ClickAttack"] then
+            pcall(function()
+                local combatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+                if combatFramework and combatFramework.activeController then
+                    combatFramework.activeController:AttackStart() -- RegisterAttack
+                    combatFramework.activeController:AttackHitStart() -- RegisterHit
+                end
+            end)
+        end
     end
 end)
