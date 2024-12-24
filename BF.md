@@ -805,7 +805,7 @@ function CheckLevel()
             };
         elseif ((Lv >= 2575 and Lv <= 2600) and not Configs.System.Selected_Mob.Auto) or (Configs.System.Selected_Mob.Auto and Configs.System.Selected_Mob.Obj == "Isle Champion") then 
             return {
-                [1] = "Isle Champion [Lv. 2525]";
+                [1] = "Isle Champion [Lv. 2550]";
                 [2] = "TikiQuest2";
                 [3] = 2;
                 [4] = "Isle Champion";
@@ -3726,15 +3726,14 @@ spawn(function()
     end
 end)
 
-local Toggle = Tabs.IQ:AddToggle("Auto Swords", {
-    Title = "ออโต้ทำดาบ แชงค์คูส", 
-    Description = "Auto Saber [Sword]",
+Section:NewToggle({
+    Title = "Auto Saber Quest",
     Default = false,
-    Callback = function(Value)
-        _G.AutoSaberSword = Value
-        StopTween( _G.AutoSaberSword)
-    end
+    Callback = function(tr)
+        Configs.Farming.Sea1.AutoSaberQuest = tr;
+    end,
 })
+
 spawn(function()
     while task.wait() do
         if _G.AutoSaberSword and game.Players.LocalPlayer.Data.Level.Value >= 200 and World1 then
