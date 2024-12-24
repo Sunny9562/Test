@@ -2117,49 +2117,7 @@ Tabs.Main:AddButton({
     end
 })
 local Main = Tabs.Main:AddSection("เมนูหลัก")
-local SelectWeapon = Tabs.Main:AddDropdown("SelectWeapon", {
-    Title = "เลือกอาวุธ",
-    Description = "Select Combat/Weapon", 
-    Values = {"หมัด","ดาบ","ปืน","ผลปีศาจ"},
-    Multi = false,
-    Default = 1,
-})
-SelectWeapon:OnChanged(function(Value)
-    _G.SelectWeapon = Value
-end)   
-spawn(function()
-    while task.wait() do
-        pcall(function()
-            local backpack = game.Players.LocalPlayer.Backpack
-            local selectedWeapon = _G.SelectWeapon            
-            if selectedWeapon == "หมัด" then
-                for i, v in pairs(backpack:GetChildren()) do
-                    if v.ToolTip == "Melee" and backpack:FindFirstChild(tostring(v.Name)) then
-                        _G.SelectWeapon = v.Name
-                    end
-                end
-            elseif selectedWeapon == "ดาบ" then
-                for i, v in pairs(backpack:GetChildren()) do
-                    if v.ToolTip == "Sword" and backpack:FindFirstChild(tostring(v.Name)) then
-                        _G.SelectWeapon = v.Name
-                    end
-                end
-            elseif selectedWeapon == "ปืน" then
-                for i, v in pairs(backpack:GetChildren()) do
-                    if v.ToolTip == "Gun" and backpack:FindFirstChild(tostring(v.Name)) then
-                        _G.SelectWeapon = v.Name
-                    end
-                end
-            elseif selectedWeapon == "ผลปีศาจ" then
-                for i, v in pairs(backpack:GetChildren()) do
-                    if v.ToolTip == "Blox Fruit" and backpack:FindFirstChild(tostring(v.Name)) then
-                        _G.SelectWeapon = v.Name
-                    end
-                end
-            end
-        end)
-    end
-end)
+
 local Toggle = Tabs.Main:AddToggle("Auto Farm Level 1-2550 Max", {
     Title = "ออโต้ฟาร์ม เลเวล", 
     Description = "Auto Farm Level 1-2550 Max",
@@ -3230,6 +3188,53 @@ local Toggle = Tabs.Main:AddToggle("Auto Skill", {
 })
 
 local Main = Tabs.Sg:AddSection("เมนูตั้งค่าฟาร์ม")
+local SelectWeapon = Tabs.Sg:AddDropdown("SelectWeapon", {
+    Title = "เลือกอาวุธ",
+    Description = "Select Combat/Weapon", 
+    Values = {"หมัด","ดาบ","ปืน","ผลปีศาจ"},
+    Multi = false,
+    Default = 1,
+})
+SelectWeapon:OnChanged(function(Value)
+    _G.SelectWeapon = Value
+end)   
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            local backpack = game.Players.LocalPlayer.Backpack
+            local selectedWeapon = _G.SelectWeapon            
+            if selectedWeapon == "หมัด" then
+                for i, v in pairs(backpack:GetChildren()) do
+                    if v.ToolTip == "Melee" and backpack:FindFirstChild(tostring(v.Name)) then
+                        _G.SelectWeapon = v.Name
+                    end
+                end
+            elseif selectedWeapon == "ดาบ" then
+                for i, v in pairs(backpack:GetChildren()) do
+                    if v.ToolTip == "Sword" and backpack:FindFirstChild(tostring(v.Name)) then
+                        _G.SelectWeapon = v.Name
+                    end
+                end
+            elseif selectedWeapon == "ปืน" then
+                for i, v in pairs(backpack:GetChildren()) do
+                    if v.ToolTip == "Gun" and backpack:FindFirstChild(tostring(v.Name)) then
+                        _G.SelectWeapon = v.Name
+                    end
+                end
+            elseif selectedWeapon == "ผลปีศาจ" then
+                for i, v in pairs(backpack:GetChildren()) do
+                    if v.ToolTip == "Blox Fruit" and backpack:FindFirstChild(tostring(v.Name)) then
+                        _G.SelectWeapon = v.Name
+                    end
+                end
+            end
+        end)
+    end
+end)
+SelectFast:OnChanged(function(Value)
+    _G.FastAttackType = Value
+end)   
+
 local Toggle = Tabs.Sg:AddToggle("Haki", {
     Title = "ออโต้เปิดฮาคิ", 
     Description = "Auto Haki", 
