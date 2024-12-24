@@ -5574,4 +5574,7 @@ local OldGetMovesetAnimCache = function(self, nnn)
     end
     return Data
 end
-
+task.spawn(function()
+    task.wait(1)
+    require(game:GetService("ReplicatedStorage").Util.CameraShaker):Stop()
+end)
