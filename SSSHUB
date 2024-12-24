@@ -2117,7 +2117,7 @@ Tabs.Main:AddButton({
     end
 })
 local Main = Tabs.Main:AddSection("เมนูหลัก")
-ocal SelectWeapon = Tabs.Main:AddDropdown("SelectWeapon", {
+local SelectWeapon = Tabs.Main:AddDropdown("SelectWeapon", {
     Title = "เลือกอาวุธ",
     Description = "Select Combat/Weapon", 
     Values = {"หมัด","ดาบ","ปืน","ผลปีศาจ"},
