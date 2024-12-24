@@ -3627,7 +3627,7 @@ local Main = Tabs.IQ:AddSection("เมนูดาบต่างๆ")
 local Toggle = Tabs.IQ:AddToggle("Auto Swords", {
     Title = "ออโต้ทำดาบ เวเดน", 
     Description = "Auto Warden [Sword]",
-    Default = false,
+    Default = true,
     Callback = function(Value)
         _G.AutoWardenSword = Value
         StopTween( _G.AutoWardenSword)
@@ -3726,14 +3726,15 @@ spawn(function()
     end
 end)
 
-Section:NewToggle({
-    Title = "Auto Saber Quest",
+local Toggle = Tabs.IQ:AddToggle("Auto Swords", {
+    Title = "ออโต้ทำดาบ แชงค์คูส", 
+    Description = "Auto Saber [Sword]",
     Default = false,
-    Callback = function(tr)
-        Configs.Farming.Sea1.AutoSaberQuest = tr;
-    end,
+    Callback = function(Value)
+        _G.AutoSaberSword = Value
+        StopTween( _G.AutoSaberSword)
+    end
 })
-
 spawn(function()
     while task.wait() do
         if _G.AutoSaberSword and game.Players.LocalPlayer.Data.Level.Value >= 200 and World1 then
