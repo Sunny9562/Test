@@ -2530,7 +2530,16 @@ local Main = Chest:AddToggle("Chest",{
     Title = "Auto Chest",
     Default = false
 })
-
+autochest:OnChanged(function(Toggle)
+    _G.Toggle_Chest = Toggle
+    if _G.Toggle_Chest == true and _G.oldpos == nil then
+        _G.oldpos = LocalPlayer.Character.HumanoidRootPart.Position
+    end
+    if _G.Toggle_Chest == false and _G.oldpos ~= nil then
+        wait(0.5)
+        _G.oldpos = nil
+    end
+end)
 
 
 
