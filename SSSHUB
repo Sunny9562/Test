@@ -2070,7 +2070,6 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
-    Status = Window:AddTab({ Title = "Status", Icon = "user"}),
     Main = Window:AddTab({ Title = "General", Icon = "rbxassetid://15712703260" }),
     Sg = Window:AddTab({ Title = "Settings", Icon = "settings" }),
     IQ = Window:AddTab({ Title = "Items & Quest", Icon = "swords" }),
@@ -2520,6 +2519,55 @@ spawn(function()
             end
         end)
     end)
+end)
+
+local Main = Tap.Main:AddSection("Auto Chest")            
+_G.Toggle_Chest = nil
+_G.oldpos = nil
+_G.Toggle_Backpos = nil
+
+local autochest = Chest:AddToggle("Chest",{
+    Title = "Auto Chest",
+    Default = false
+})
+autochest:OnChanged(function(Toggle)
+    _G.Toggle_Chest = Toggle
+    if _G.Toggle_Chest == true and _G.oldpos == nil then
+        _G.oldpos = LocalPlayer.Character.HumanoidRootPart.Position
+    end
+    if _G.Toggle_Chest == false and _G.oldpos ~= nil then
+        wait(0.5)
+        _G.oldpos = nil
+    end
+end)
+
+local autobackpos = Chest:AddToggle("BackPos",{
+    Title = "Auto Back",
+    Default = true
+})
+
+autobackpos:OnChanged(function(Toggle)
+    _G.Toggle_Backpos = Toggle
+end)
+
+RunService.RenderStepped:Connect(function()
+    if _G.Toggle_Chest == true then
+        for i,v in pairs(game.workspace.ChestModels:GetChildren()) do
+            if i ~= nil then
+                LocalPlayer.Character.HumanoidRootPart.CFrame = v.RootPart.CFrame
+                wait(0.25)
+                v:Destroy()
+            end
+        end
+    else
+        if _G.oldpos ~= nil then
+            if _G.Toggle_Backpos == true then
+                local distance = (LocalPlayer.Character.HumanoidRootPart.Position - _G.oldpos).Magnitude / 190
+                local tweenold = TweenService:Create(LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(distance, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {CFrame = CFrame.new(_G.oldpos)})
+                tweenold:Play()
+            end
+        end
+    end
 end)
 
 local Main = Tabs.Main:AddSection("ทำเควสโลก 2-3")
@@ -5527,42 +5575,6 @@ Tabs.Misc:AddButton({
         Hop()
     end
 })
-
---Status
-local Statustap = Tap.Status:AddSection("Status Player")
-
-local stlv = Statustap:AddParagraph({
-    Title = ""
-})
-
-local stxp = Statustap:AddParagraph({
-    Title = ""
-})
-
-local stbl = Statustap:AddParagraph({
-    Title = ""
-})
-
-local stfm = Statustap:AddParagraph({
-    Title = ""
-})
-
-local strc = Statustap:AddParagraph({
-    Title = ""
-})
-
-local stsp = Statustap:AddParagraph({
-    Title = ""
-})
-
-RunService.RenderStepped:Connect(function()
-    stlv:SetTitle("Level  :  " .. Client.Data.Level.Value)
-    stxp:SetTitle("Exp  :  " .. Client.Data.Exp.Value)
-    stbl:SetTitle("Beli  :  " .. Client.Data.Beli.Value)
-    stfm:SetTitle("Fragments  :  " .. Client.Data.Fragments.Value)
-    strc:SetTitle("Race  :  " .. Client.Data.Race.Value)
-    stsp:SetTitle("Spawn Point  :  " .. Client.Data.SpawnPoint.Value)
-end)
 
 -- FastAttack 
 local environment, replicatedstorage, players, net, client, modulepath, characterfolder, enemyfolder do
