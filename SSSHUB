@@ -2523,53 +2523,6 @@ end)
 
 
 local Main = Tabs.Main:AddSection("Auto Chest")
-_G.Toggle_Chest = nil
-_G.oldpos = nil
-_G.Toggle_Backpos = nil
-local Toggle = Tabs.Main:AddToggle("Auto Chest", { 
-        Title = "Auto Chest",
-        Default = false
-    })
-
-autochest:OnChanged(function(Toggle)
-        _G.Toggle_Chest = Toggle
-        if _G.Toggle_Chest == true and _G.oldpos == nil then
-            _G.oldpos = LocalPlayer.Character.HumanoidRootPart.Position
-        end
-        if _G.Toggle_Chest == false and _G.oldpos ~= nil then
-            wait(0.5)
-            _G.oldpos = nil
-        end
-    end)
-    
-local autobackpos = Chest:AddToggle("BackPos",{
-        Title = "Auto Back",
-        Default = true
-    })
-    
-autobackpos:OnChanged(function(Toggle)
-        _G.Toggle_Backpos = Toggle
-    end)
-    
-RunService.RenderStepped:Connect(function()
-        if _G.Toggle_Chest == true then
-            for i,v in pairs(game.workspace.ChestModels:GetChildren()) do
-                if i ~= nil then
-                    LocalPlayer.Character.HumanoidRootPart.CFrame = v.RootPart.CFrame
-                    wait(0.25)
-                    v:Destroy()
-                end
-            end
-        else
-            if _G.oldpos ~= nil then
-                if _G.Toggle_Backpos == true then
-                    local distance = (LocalPlayer.Character.HumanoidRootPart.Position - _G.oldpos).Magnitude / 190
-                    local tweenold = TweenService:Create(LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(distance, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0), {CFrame = CFrame.new(_G.oldpos)})
-                    tweenold:Play()
-                end
-            end
-        end
-    end)
 
 
 
