@@ -2520,6 +2520,27 @@ spawn(function()
         end)
     end)
 end)
+
+local Toggle = Tabs.Main:AddToggle("Auto Chest", {
+local autochest = Chest:AddToggle("Chest",{
+        Title = "Auto Chest",
+        Default = false
+    })
+    autochest:OnChanged(function(Toggle)
+        _G.Toggle_Chest = Toggle
+        if _G.Toggle_Chest == true and _G.oldpos == nil then
+            _G.oldpos = LocalPlayer.Character.HumanoidRootPart.Position
+        end
+        if _G.Toggle_Chest == false and _G.oldpos ~= nil then
+            wait(0.5)
+            _G.oldpos = nil
+        end
+    end)   
+
+
+
+
+
 local Main = Tabs.Main:AddSection("ทำเควสโลก 2-3")
 local Toggle = Tabs.Main:AddToggle("Auto Quest World", {
     Title = "ออโต้ทำ เควสโลก 2 [Lv. 700]", 
