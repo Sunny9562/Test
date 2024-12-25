@@ -2521,8 +2521,7 @@ spawn(function()
     end)
 end)
 
-local Toggle = Tabs.Main:AddToggle("Auto Chest", {
-local autochest = Chest:AddToggle("Chest",{
+local Toggle = Tabs.Main:AddToggle("Auto Chest", { 
         Title = "Auto Chest",
         Default = false
     })
