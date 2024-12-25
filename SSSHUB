@@ -5528,81 +5528,40 @@ Tabs.Misc:AddButton({
     end
 })
 
-local Status = Tap.Main:AddSection("Auto Status")
-_G.Melee_Status = nil
-_G.Defense_Status = nil
-_G.Sword_Status = nil
-_G.Gun_Status = nil
-_G.Fruit_Status = nil
-_G.Point_Status = 1
+--Status
+local Statustap = Tap.Status:AddSection("Status Player")
 
-local btml = auto_stats:AddToggle("Melee",{
-    Title = "Melee",
-    Default = true
-})
-local btde = auto_stats:AddToggle("Defense",{
-    Title = "Defense",
-    Default = true
-})
-local btsw = auto_stats:AddToggle("Sword",{
-    Title = "Sword",
-    Default = false
-})
-local btgn = auto_stats:AddToggle("Gun",{
-    Title = "Gun",
-    Default = false
-})
-local btdf = auto_stats:AddToggle("Demon Fruit",{
-    Title = "Demon Fruit",
-    Default = true
+local stlv = Statustap:AddParagraph({
+    Title = ""
 })
 
-btml:OnChanged(function(Toggle)
-    _G.Melee_Status = Toggle
-end)
-btde:OnChanged(function(Toggle)
-    _G.Defense_Status = Toggle
-end)
-btsw:OnChanged(function(Toggle)
-    _G.Sword_Status = Toggle
-end)
-btgn:OnChanged(function(Toggle)
-    _G.Gun_Status = Toggle
-end)
-btdf:OnChanged(function(Toggle)
-    _G.Fruit_Status = Toggle
-end)
+local stxp = Statustap:AddParagraph({
+    Title = ""
+})
 
-local Input_Point = auto_stats:AddInput("Point", {
-    Title = "Status Point",
-    Default = 1,
-    Placeholder = "Status Point",
-    Numeric = true,
-    Finished = false,
-    Callback = function(Value)
-         _G.Point_Status = Value
-    end
+local stbl = Statustap:AddParagraph({
+    Title = ""
+})
+
+local stfm = Statustap:AddParagraph({
+    Title = ""
+})
+
+local strc = Statustap:AddParagraph({
+    Title = ""
+})
+
+local stsp = Statustap:AddParagraph({
+    Title = ""
 })
 
 RunService.RenderStepped:Connect(function()
-    wait(0.2)
-    if _G.Point_Status >= 1 then
-        if _G.Melee_Status == true and Client.Data.Stats.Melee.Level.Value <= Client.Data.Level.Value then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Melee",_G.Point_Status)
-        end
-        if _G.Defense_Status == true and Client.Data.Stats.Defense.Level.Value <= Client.Data.Level.Value then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Defense",_G.Point_Status)
-        end
-        if _G.Sword_Status == true and Client.Data.Stats.Sword.Level.Value <= Client.Data.Level.Value then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Sword",_G.Point_Status)
-        end
-        if _G.Gun_Status == true and Client.Data.Stats.Gun.Level.Value <= Client.Data.Level.Value then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Gun",_G.Point_Status)
-        end
-        if _G.Fruit_Status == true and Client.Data.Stats["Demon Fruit"].Level.Value <= Client.Data.Level.Value then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Demon Fruit",_G.Point_Status)
-        end
-    end
+    stlv:SetTitle("Level  :  " .. Client.Data.Level.Value)
+    stxp:SetTitle("Exp  :  " .. Client.Data.Exp.Value)
+    stbl:SetTitle("Beli  :  " .. Client.Data.Beli.Value)
+    stfm:SetTitle("Fragments  :  " .. Client.Data.Fragments.Value)
+    strc:SetTitle("Race  :  " .. Client.Data.Race.Value)
+    stsp:SetTitle("Spawn Point  :  " .. Client.Data.SpawnPoint.Value)
 end)
 -- FastAttack 
 local environment, replicatedstorage, players, net, client, modulepath, characterfolder, enemyfolder do
