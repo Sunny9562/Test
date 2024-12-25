@@ -5563,6 +5563,7 @@ RunService.RenderStepped:Connect(function()
     strc:SetTitle("Race  :  " .. Client.Data.Race.Value)
     stsp:SetTitle("Spawn Point  :  " .. Client.Data.SpawnPoint.Value)
 end)
+
 -- FastAttack 
 local environment, replicatedstorage, players, net, client, modulepath, characterfolder, enemyfolder do
 	environment = (getgenv or getrenv or getfenv)()
@@ -5660,7 +5661,7 @@ Module.FastAttack = (function()
 
 	task.spawn(function()
 		while task.wait(Settings.ClickDelay or 0.125) do
-			if (tick() - Module.AttackCooldown) < 0.2833333194255829 then continue end
+			if (tick() - Module.AttackCooldown) < 0.4833333194255829 then continue end
 			if not Settings.AutoClick then continue end
 			if not Module.IsAlive(client.Character) then continue end
 			if not client.Character:FindFirstChildOfClass("Tool") then continue end
