@@ -2060,7 +2060,7 @@ ImageButton.MouseButton1Down:Connect(function()
 end)
 
 local Window = Fluent:CreateWindow({
-    Title = "Rocket Hub " .. Fluent.Version,
+    Title = "Razer Hub " .. Fluent.Version,
     SubTitle = "Version : Thai & England",
     TabWidth = 100,
     Size = UDim2.fromOffset(480, 380),
@@ -2070,6 +2070,7 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
+    Status = Window:AddTab({ Title = "Status", Icon = "user"}),
     Main = Window:AddTab({ Title = "General", Icon = "rbxassetid://15712703260" }),
     Sg = Window:AddTab({ Title = "Settings", Icon = "settings" }),
     IQ = Window:AddTab({ Title = "Items & Quest", Icon = "swords" }),
@@ -2086,6 +2087,83 @@ do
 end
 
 PosY = "35"
+
+local auto_stats = Tap.Main:AddSection("Auto Status")
+_G.Melee_Status = nil
+_G.Defense_Status = nil
+_G.Sword_Status = nil
+_G.Gun_Status = nil
+_G.Fruit_Status = nil
+_G.Point_Status = 1
+
+local btml = auto_stats:AddToggle("Melee",{
+    Title = "Melee",
+    Default = true
+})
+local btde = auto_stats:AddToggle("Defense",{
+    Title = "Defense",
+    Default = true
+})
+local btsw = auto_stats:AddToggle("Sword",{
+    Title = "Sword",
+    Default = false
+})
+local btgn = auto_stats:AddToggle("Gun",{
+    Title = "Gun",
+    Default = false
+})
+local btdf = auto_stats:AddToggle("Demon Fruit",{
+    Title = "Demon Fruit",
+    Default = true
+})
+
+btml:OnChanged(function(Toggle)
+    _G.Melee_Status = Toggle
+end)
+btde:OnChanged(function(Toggle)
+    _G.Defense_Status = Toggle
+end)
+btsw:OnChanged(function(Toggle)
+    _G.Sword_Status = Toggle
+end)
+btgn:OnChanged(function(Toggle)
+    _G.Gun_Status = Toggle
+end)
+btdf:OnChanged(function(Toggle)
+    _G.Fruit_Status = Toggle
+end)
+
+local Input_Point = auto_stats:AddInput("Point", {
+    Title = "Status Point",
+    Default = 1,
+    Placeholder = "Status Point",
+    Numeric = true,
+    Finished = false,
+    Callback = function(Value)
+         _G.Point_Status = Value
+    end
+})
+
+RunService.RenderStepped:Connect(function()
+    wait(0.2)
+    if _G.Point_Status >= 1 then
+        if _G.Melee_Status == true and Client.Data.Stats.Melee.Level.Value <= Client.Data.Level.Value then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Melee",_G.Point_Status)
+        end
+        if _G.Defense_Status == true and Client.Data.Stats.Defense.Level.Value <= Client.Data.Level.Value then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Defense",_G.Point_Status)
+        end
+        if _G.Sword_Status == true and Client.Data.Stats.Sword.Level.Value <= Client.Data.Level.Value then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Sword",_G.Point_Status)
+        end
+        if _G.Gun_Status == true and Client.Data.Stats.Gun.Level.Value <= Client.Data.Level.Value then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Gun",_G.Point_Status)
+        end
+        if _G.Fruit_Status == true and Client.Data.Stats["Demon Fruit"].Level.Value <= Client.Data.Level.Value then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Demon Fruit",_G.Point_Status)
+        end
+    end
+end)
 
 local Main = Tabs.Main:AddSection("Credit")
 Tabs.Main:AddParagraph({
