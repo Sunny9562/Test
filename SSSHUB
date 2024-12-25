@@ -2088,7 +2088,7 @@ end
 
 PosY = "35"
 
-local auto_stats = Tap.Main:AddSection("Auto Status")
+local Status = Tap.Main:AddSection("Auto Status")
 _G.Melee_Status = nil
 _G.Defense_Status = nil
 _G.Sword_Status = nil
