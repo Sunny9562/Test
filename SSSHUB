@@ -2124,6 +2124,9 @@ local Toggle = Tabs.Main:AddToggle("Auto Farm Level 1-2550 Max", {
     Default = false,
     Callback = function(Value)
         _G.AutoFarmLevel = Value
+        _G.Toggle_Bring = nil
+        _G.Toggle_Buso = nil
+        _G.Toggle_Anchored = nil
         StopTween(_G.AutoFarmLevel)
     end
 })
